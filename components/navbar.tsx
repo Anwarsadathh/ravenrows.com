@@ -12,51 +12,110 @@ import {
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[color:color-mix(in_srgb,var(--background)_78%,transparent)] backdrop-blur-2xl">
-      <div className="section-shell flex items-center justify-between px-4 py-4 md:px-6">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--foreground)] text-sm font-bold text-white dark:bg-white dark:text-black">
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-[color:color-mix(in_srgb,var(--background)_82%,transparent)] backdrop-blur-2xl dark:border-white/10">
+      <div className="section-shell flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
+        <Link href="/" className="flex min-w-0 items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--foreground)] text-[13px] font-semibold tracking-[0.08em] text-white dark:bg-white dark:text-black md:h-11 md:w-11">
             RR
           </div>
-          <div>
-            <p className="text-sm font-semibold tracking-[0.24em]">RAVEN ROWS</p>
-            <p className="text-xs text-[var(--muted-foreground)]">Where Stories Takes Flight</p>
+
+          <div className="min-w-0">
+            <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--foreground)] sm:text-xs">
+              Raven Rows
+            </p>
+            <p className="truncate text-[11px] text-[var(--muted-foreground)]">
+              Where Stories Take Flight
+            </p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="#film" className="text-sm text-[var(--muted-foreground)] transition hover:text-[var(--foreground)]">
+        <nav className="hidden items-center gap-7 md:flex">
+          <a
+            href="#film"
+            className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
             Film World
           </a>
-          <a href="#events" className="text-sm text-[var(--muted-foreground)] transition hover:text-[var(--foreground)]">
+          <a
+            href="#events"
+            className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
             Event World
           </a>
-          <a href="#contact" className="text-sm text-[var(--muted-foreground)] transition hover:text-[var(--foreground)]">
+          <a
+            href="#contact"
+            className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
             Contact
           </a>
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
-          <Button className="rounded-full bg-[var(--foreground)] px-6 text-white hover:opacity-90 dark:bg-white dark:text-black">
-            Start a Project
+          <Button
+            asChild
+            className="h-11 rounded-full bg-[var(--foreground)] px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white hover:opacity-90 dark:bg-white dark:text-black"
+          >
+            <a href="#contact">Start a Project</a>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
+
           <Sheet>
             <SheetTrigger asChild>
-              <button className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)]">
+              <button
+                aria-label="Open menu"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/70 text-[var(--foreground)] backdrop-blur-md transition hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+              >
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
-              <div className="mt-10 flex flex-col gap-6">
-                <a href="#film" className="text-base font-medium">Film World</a>
-                <a href="#events" className="text-base font-medium">Event World</a>
-                <a href="#contact" className="text-base font-medium">Contact</a>
-                <Button className="mt-4 rounded-full">Start a Project</Button>
+
+            <SheetContent
+              side="right"
+              className="w-[300px] border-l border-black/10 bg-[var(--background)] px-6 pt-8 dark:border-white/10"
+            >
+              <div className="flex h-full flex-col">
+                <div className="border-b border-black/5 pb-5 dark:border-white/10">
+                  <p className="text-[10px] uppercase tracking-[0.24em] text-[var(--muted-foreground)]">
+                    Navigation
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[var(--foreground)]">
+                    Raven Rows
+                  </p>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-1">
+                  <a
+                    href="#film"
+                    className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Film World
+                  </a>
+                  <a
+                    href="#events"
+                    className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Event World
+                  </a>
+                  <a
+                    href="#contact"
+                    className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Contact
+                  </a>
+                </div>
+
+                <div className="mt-auto pb-6 pt-8">
+                  <Button
+                    asChild
+                    className="h-12 w-full rounded-full bg-[var(--foreground)] text-[11px] font-medium uppercase tracking-[0.22em] text-white hover:opacity-90 dark:bg-white dark:text-black"
+                  >
+                    <a href="#contact">Start a Project</a>
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
