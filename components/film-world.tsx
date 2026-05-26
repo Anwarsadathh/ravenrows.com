@@ -1,74 +1,127 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Play,
+  CalendarRange,
   Clapperboard,
-  Camera,
-  Music4,
-  Film,
+  Flame,
+  PlayCircle,
   Sparkles,
+  Trophy,
+  Video,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
-const filmServices = [
+const featuredFilms = [
   {
-    title: "Documentary Films",
+    title: "Ayodhya Deepotsav",
+    category: "Festival Film",
     description:
-      "Impactful documentaries capturing culture, real stories, faith, social initiatives, and large-scale experiences with cinematic excellence.",
-    icon: Film,
-    accent: "from-teal-400/20 to-teal-500/5",
+      "Raven Rows captured the scale, devotion, and cultural magnificence of Ayodhya Deepotsav through cinematic coverage, drone visuals, and emotionally driven visual storytelling.",
+    image: "/images/film/ayodhya-deepotsav/cover.jpg",
+    tags: ["Drone", "Festival", "Cultural", "Cinematic"],
+    accent: "from-orange-500/20 via-amber-300/10 to-transparent",
   },
   {
-    title: "Commercial Ad Films",
+    title: "Dev Deepawali",
+    category: "Cultural Coverage",
     description:
-      "Creative advertising films designed to build identity, emotional connection, and high-value brand perception.",
-    icon: Sparkles,
-    accent: "from-violet-400/20 to-violet-500/5",
+      "From illuminated ghats and sacred rituals to performances and devotional gatherings, Raven Rows transformed Dev Deepawali into a visually immersive storytelling experience.",
+    image: "/images/film/dev-deepawali/cover.jpg",
+    tags: ["Event Film", "Visual Storytelling", "Drone"],
+    accent: "from-violet-500/18 via-teal-400/10 to-transparent",
   },
   {
-    title: "Sports Films",
+    title: "Kumbh",
+    category: "Documentary-style Production",
     description:
-      "Dynamic visual storytelling around athletes, tournaments, fan culture, match moments, and sports energy.",
-    icon: Camera,
-    accent: "from-orange-400/20 to-orange-500/5",
-  },
-  {
-    title: "Performance Visuals",
-    description:
-      "Concert aftermovies, artist-focused filming, stage visuals, and immersive entertainment storytelling.",
-    icon: Music4,
-    accent: "from-fuchsia-400/20 to-fuchsia-500/5",
-  },
-  {
-    title: "Digital Content",
-    description:
-      "Reels, campaign edits, motion-led content, short-form storytelling, and creative social-first production.",
-    icon: Clapperboard,
-    accent: "from-cyan-400/20 to-cyan-500/5",
+      "A powerful visual narrative capturing the magnitude, emotion, and spiritual atmosphere of one of India’s most iconic gatherings through cinematic framing and scale-driven coverage.",
+    image: "/images/film/kumbh/cover.jpg",
+    tags: ["Documentary", "Large Scale", "Emotion"],
+    accent: "from-cyan-500/18 via-violet-400/10 to-transparent",
   },
 ];
 
-const featuredWork = [
+const adFilms = [
   {
-    title: "Mahakumbh 2025",
+    title: "EVA YES by Riva Kenko",
+    subtitle: "Multivitamin brand campaign",
     description:
-      "Cinematic storytelling, aerial visuals, documentary-style production, and emotional narratives reflecting the spirit of faith and culture.",
-    tags: ["Documentary", "Government", "Cultural"],
-    image: "/images/mahakumbh.jpg",
+      "Multiple promotional shoots created for digital campaigns and brand communication, combining lifestyle-driven visuals with sports-led credibility.",
+    image: "/images/film/eva-yes/cover.jpg",
+    tags: ["Ad Film", "Brand Campaign", "Product Shoot"],
   },
   {
-    title: "Sports Documentation",
+    title: "Zeeshan Ansari Ad Shoot",
+    subtitle: "Cricket personality-led branded content",
     description:
-      "Visually engaging sports content built around cricket leagues, outreach programs, sports talent hunts, and stadium experiences.",
-    tags: ["Sports", "Live", "Dynamic"],
-    image: "/images/event-world.jpg",
+      "A campaign featuring Zeeshan Ansari, blending product-led storytelling with strong sports recognition and audience engagement.",
+    image: "/images/film/zeeshan-ansari/cover.jpg",
+    tags: ["Sports Branding", "Commercial", "Talent-led"],
   },
   {
-    title: "Concert Visuals",
+    title: "Priyam Garm Gennie Ad Shoot",
+    subtitle: "Commercial production",
     description:
-      "Immersive visual experiences for concerts and entertainment through cinematic filming, crowd coverage, and artist-focused storytelling.",
-    tags: ["Concert", "Artist", "Live"],
-    image: "/images/concert.jpg",
+      "Promotional content designed for digital-first brand visibility with sharp product communication and visually engaging execution.",
+    image: "/images/film/priyam-garm-gennie/cover.jpg",
+    tags: ["Commercial", "Product", "Campaign"],
+  },
+];
+
+const storyHighlights = [
+  {
+    title: "Emotional Storytelling Piece 01",
+    body:
+      "A narrative-led film focused on emotion, character, and visual pacing — built to stay with the audience beyond the final frame.",
+  },
+  {
+    title: "Emotional Storytelling Piece 02",
+    body:
+      "A second signature storytelling work that showcases Raven Rows’ strength in mood, cinematic structure, and memorable visual narrative.",
+  },
+];
+
+const screenSports = [
+  {
+    title: "Lucknow Premiere League Promo",
+    category: "Screen Sports",
+    description:
+      "High-energy promo storytelling created to build excitement, identity, and momentum around league action and audience anticipation.",
+  },
+  {
+    title: "Sports Storytelling",
+    category: "Screen Sports",
+    description:
+      "From athlete-led narratives to league-driven visual campaigns, Raven Rows shapes sports content with emotion, pace, and visual drama.",
+  },
+];
+
+const processPillars = [
+  {
+    icon: Clapperboard,
+    title: "Ad Films & Campaign Shoots",
+    description:
+      "Commercial storytelling, branded content, and digital-first visual campaigns.",
+  },
+  {
+    icon: Video,
+    title: "Documentary & Event Films",
+    description:
+      "Narrative-driven coverage for large-scale gatherings, festivals, and major public moments.",
+  },
+  {
+    icon: Trophy,
+    title: "Sports Content",
+    description:
+      "League promos, athlete films, and performance-led storytelling with cinematic energy.",
+  },
+  {
+    icon: Flame,
+    title: "Festival Visual Production",
+    description:
+      "Drone visuals, rituals, crowd scale, and emotionally resonant cultural storytelling.",
   },
 ];
 
@@ -76,269 +129,356 @@ export function FilmWorld() {
   return (
     <section
       id="film"
-      className="relative overflow-hidden bg-[#060606] px-4 py-16 text-white md:px-6 md:py-24"
+      className="relative overflow-hidden bg-[#060606] text-white"
     >
-      {/* full-width background accents */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.10),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.10),transparent_30%)]" />
-      <div className="pointer-events-none absolute -left-10 top-0 h-56 w-56 rounded-full bg-teal-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-10 h-56 w-56 rounded-full bg-violet-500/10 blur-3xl" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.14),transparent_24%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.10),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(251,146,60,0.08),transparent_30%)]" />
+      <div className="absolute left-0 top-20 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
+      <div className="absolute right-0 top-96 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
 
-      <div className="section-shell relative">
-        {/* HERO + FEATURED PROJECT */}
-        <div className="border-b border-white/10">
-          <div className="grid gap-8 py-8 md:py-12 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
-            {/* Left text block */}
-            <div className="max-w-3xl">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.26em] text-white/70">
-                <Play className="h-3.5 w-3.5" />
-                Film & Production Division
-              </div>
+      <div className="relative">
+        <section className="px-4 pb-10 pt-8 md:px-6 md:pb-14 md:pt-12">
+          <div className="section-shell">
+            <motion.div
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-end"
+            >
+              <div className="max-w-4xl">
+                <p className="mb-4 text-[11px] uppercase tracking-[0.26em] text-white/55">
+                  Screenworks
+                </p>
 
-              <h2 className="text-4xl font-semibold leading-[0.95] tracking-[-0.07em] md:text-6xl xl:text-7xl">
-                We don’t just create videos.
-                <span className="mt-2 block text-white/70">We create emotions.</span>
-              </h2>
+                <h1 className="max-w-[10ch] text-[42px] font-semibold leading-[0.92] tracking-[-0.07em] text-white sm:text-[58px] md:text-[76px] lg:text-[88px]">
+                  Films. Stories.
+                  <span className="block text-white/72">Emotions.</span>
+                </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
-                At Raven Rows, filmmaking is more than production — it is storytelling
-                with purpose. We combine cinematic visuals, creative direction, and
-                emotional depth to create films that connect with audiences and leave a
-                lasting impact.
-              </p>
+                <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">
+                  From ad films and documentary-style coverage to sports promos,
+                  festival storytelling, and emotionally driven visual narratives,
+                  Raven Rows creates screenwork with cinematic depth and cultural presence.
+                </p>
 
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/58">
-                From documentaries and commercial campaigns to sports storytelling and
-                branded content, we bring ideas to life through powerful visual narratives.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button className="h-12 rounded-full bg-white px-6 text-black hover:bg-white/90">
-                  Get a Film Quote
-                </Button>
-                <Button
-                  variant="outline"
-                  className="h-12 rounded-full border-white/15 bg-white/[0.03] px-6 text-white hover:bg-white/[0.08]"
-                >
-                  Explore Featured Work
-                </Button>
-              </div>
-            </div>
-
-            {/* Right featured Mahakumbh card */}
-            <div className="relative min-h-[340px] overflow-hidden rounded-[30px] border border-white/10">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to top, rgba(0,0,0,0.76), rgba(0,0,0,0.18)), url('/images/mahakumbh.jpg')",
-                }}
-              />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.10),transparent_25%)]" />
-
-              <div className="relative flex h-full flex-col justify-between p-8">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur">
-                    Featured Project
-                  </div>
-                  <button className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white backdrop-blur transition hover:scale-105">
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Link
+                    href="#featured-films"
+                    className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
+                  >
+                    Explore Film Work
                     <ArrowUpRight className="h-4 w-4" />
-                  </button>
-                </div>
+                  </Link>
 
-                <div>
-                  <h3 className="text-3xl font-semibold tracking-[-0.05em] md:text-4xl">
-                    Mahakumbh 2025
-                  </h3>
-                  <p className="mt-4 max-w-lg text-sm leading-7 text-white/80 md:text-base">
-                    Raven Rows documented and produced visual content for Mahakumbh 2025,
-                    one of the world’s largest spiritual and cultural gatherings, through
-                    cinematic storytelling, aerial visuals, documentary-style production,
-                    and emotional narratives.
-                  </p>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {["Documentary", "Government", "Cultural"].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-white/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-white/10"
+                  >
+                    Start a Film Project
+                  </Link>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        {/* SERVICES */}
-        <div className="py-8 md:py-12 lg:py-16">
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/45">
-                What we create
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                {[
+                  "Ad films & branded campaigns",
+                  "Festival and documentary coverage",
+                  "Sports promos & visual storytelling",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[24px] border border-white/10 bg-white/[0.04] px-4 py-4 backdrop-blur-sm"
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-white/45">
+                      Capability
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-white/82">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="featured-films" className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                Featured Work
               </p>
-              <h3 className="text-3xl font-semibold tracking-[-0.05em] md:text-5xl">
-                Storytelling through cinema.
-              </h3>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Signature cinematic stories.
+              </h2>
             </div>
-            <p className="max-w-2xl text-sm leading-7 text-white/55 md:text-base">
-              Our production division crafts visually compelling stories that inspire,
-              engage, and elevate brands. Every frame is shaped with emotion,
-              authenticity, and creativity.
-            </p>
-          </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {filmServices.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <Card
-                  key={item.title}
-                  className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] text-white shadow-none transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.07]"
+            <div className="grid gap-4 lg:grid-cols-3">
+              {featuredFilms.map((film, index) => (
+                <motion.article
+                  key={film.title}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
                 >
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-80`}
+                    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.90), rgba(5,5,5,0.22)), url('${film.image}')`,
+                    }}
                   />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.10),transparent_28%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${film.accent}`} />
 
-                  <CardContent className="relative p-7">
-                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[20px] border border-white/10 bg-black/20 backdrop-blur">
-                      <Icon className="h-6 w-6 text-white" />
+                  <div className="relative flex min-h-[380px] flex-col justify-between p-5 sm:min-h-[420px] sm:p-6 lg:min-h-[460px]">
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75">
+                        {film.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">
+                        <PlayCircle className="h-3 w-3" />
+                        Screenwork
+                      </span>
                     </div>
 
-                    <h4 className="text-[28px] font-semibold leading-[1.15] tracking-[-0.04em]">
-                      {item.title}
-                    </h4>
+                    <div>
+                      <h3 className="max-w-[12ch] text-[28px] font-semibold leading-[1] tracking-[-0.05em] text-white sm:text-[32px]">
+                        {film.title}
+                      </h3>
 
-                    <p className="mt-4 text-base leading-8 text-white/65">
-                      {item.description}
-                    </p>
+                      <p className="mt-4 max-w-sm text-[14px] leading-7 text-white/78">
+                        {film.description}
+                      </p>
 
-                    <div className="mt-8 h-px w-full bg-white/10" />
-                    <p className="mt-5 text-[11px] uppercase tracking-[0.25em] text-white/38">
-                      Raven Rows Production
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* FEATURED WORK GRID */}
-          <div className="mt-14">
-            <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/45">
-                  Featured work
-                </p>
-                <h3 className="text-3xl font-semibold tracking-[-0.05em] md:text-5xl">
-                  Selected visual stories.
-                </h3>
-              </div>
-              <p className="max-w-2xl text-sm leading-7 text-white/55 md:text-base">
-                From cultural documentaries to sports storytelling and immersive concert
-                visuals, Raven Rows creates visual experiences that feel cinematic,
-                emotional, and memorable.
-              </p>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              {/* Big left tile */}
-              <div className="group relative min-h-[460px] overflow-hidden rounded-[32px] border border-white/10">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to top, rgba(0,0,0,0.76), rgba(0,0,0,0.18)), url('/images/mahakumbh.jpg')",
-                  }}
-                />
-                <div className="relative flex h-full flex-col justify-end p-8 md:p-10">
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    {featuredWork[0].tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-white/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <h4 className="text-3xl font-semibold tracking-[-0.05em] md:text-5xl">
-                    {featuredWork[0].title}
-                  </h4>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/82 md:text-base">
-                    {featuredWork[0].description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right column smaller tiles */}
-              <div className="grid gap-6">
-                {featuredWork.slice(1).map((item) => (
-                  <div
-                    key={item.title}
-                    className="group relative min-h-[217px] overflow-hidden rounded-[28px] border border-white/10"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
-                      style={{
-                        backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.15)), url('${item.image}')`,
-                      }}
-                    />
-                    <div className="relative flex h-full flex-col justify-end p-7">
-                      <div className="mb-3 flex flex-wrap gap-2">
-                        {item.tags.map((tag) => (
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {film.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/80"
+                            className="rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[11px] text-white/78"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <h4 className="text-2xl font-semibold tracking-[-0.04em]">
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                Ad Films
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Commercials, campaigns, and branded shoots.
+              </h2>
+              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-white/68">
+                Product-focused campaigns crafted with lifestyle visuals, sports-driven
+                credibility, and audience-first storytelling.
+              </p>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-3">
+              {adFilms.map((film, index) => (
+                <motion.article
+                  key={film.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.65,
+                    delay: index * 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
+                >
+                  <div className="relative h-72 overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{
+                        backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.55), rgba(5,5,5,0.08)), url('${film.image}')`,
+                      }}
+                    />
+                  </div>
+
+                  <div className="p-5">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-white/42">
+                      {film.subtitle}
+                    </p>
+                    <h3 className="mt-3 text-[22px] font-semibold leading-[1.05] tracking-[-0.04em] text-white">
+                      {film.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-7 text-white/66">
+                      {film.description}
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {film.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[11px] text-white/78"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6 md:p-7">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                  Storytelling
+                </p>
+                <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px]">
+                  Narrative work that stays with people.
+                </h2>
+
+                <div className="mt-6 grid gap-4">
+                  {storyHighlights.map((item) => (
+                    <div
+                      key={item.title}
+                      className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4"
+                    >
+                      <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
+                        <CalendarRange className="h-3.5 w-3.5" />
+                        Story Highlight
+                      </div>
+                      <h3 className="mt-4 text-[22px] font-semibold leading-[1.04] tracking-[-0.04em] text-white">
                         {item.title}
-                      </h4>
-                      <p className="mt-3 max-w-xl text-sm leading-7 text-white/78">
+                      </h3>
+                      <p className="mt-3 text-[14px] leading-7 text-white/66">
+                        {item.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6 md:p-7">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                  Screen Sports
+                </p>
+                <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px]">
+                  Motion built for sports energy.
+                </h2>
+
+                <div className="mt-6 grid gap-4">
+                  {screenSports.map((item) => (
+                    <div
+                      key={item.title}
+                      className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4"
+                    >
+                      <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
+                        <Sparkles className="h-3.5 w-3.5" />
+                        {item.category}
+                      </div>
+                      <h3 className="mt-4 text-[22px] font-semibold leading-[1.04] tracking-[-0.04em] text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-[14px] leading-7 text-white/66">
                         {item.description}
                       </p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* FINAL CTA STRIP */}
-          <div className="mt-14 overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04]">
-            <div className="grid gap-8 p-8 md:p-10 lg:grid-cols-[0.95fr_1.05fr]">
-              <div>
-                <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/45">
-                  Final frame
-                </p>
-                <h3 className="text-3xl font-semibold tracking-[-0.05em] md:text-5xl">
-                  Ready to bring your vision to life through cinema.
-                </h3>
-              </div>
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                What We Create
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Screen-first production capability.
+              </h2>
+            </div>
 
-              <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-                <p className="max-w-2xl text-base leading-8 text-white/62">
-                  Whether it’s a documentary, brand film, sports story, or digital campaign,
-                  Raven Rows is ready to create visual work that feels premium, human, and
-                  unforgettable.
-                </p>
-
-                <Button className="h-12 rounded-full bg-white px-6 text-black hover:bg-white/90">
-                  Tell us your story
-                </Button>
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {processPillars.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{
+                      duration: 0.65,
+                      delay: index * 0.04,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/10">
+                      <Icon className="h-5 w-5 text-white/82" />
+                    </div>
+                    <h3 className="mt-5 text-[22px] font-semibold leading-[1] tracking-[-0.04em] text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-7 text-white/68">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="px-4 pb-16 pt-8 md:px-6 md:pb-24">
+          <div className="section-shell">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm sm:p-8 lg:p-10"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.10),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.12),transparent_28%)]" />
+
+              <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-2xl">
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                    Final Frame
+                  </p>
+                  <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                    Need a film, campaign, documentary, or promo that carries real emotion?
+                  </h2>
+                  <p className="mt-4 text-[15px] leading-7 text-white/68">
+                    Raven Rows combines direction, production planning, visual craft,
+                    and cinematic storytelling to create work designed for both impact
+                    and memory.
+                  </p>
+                </div>
+
+                <Link
+                  href="#contact"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
+                >
+                  Start a Film Project
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </section>
   );

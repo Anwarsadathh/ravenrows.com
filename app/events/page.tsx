@@ -8,7 +8,6 @@ export default function EventsPage() {
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
       <EventWorld />
-      <ContactSection />
       <Footer />
     </main>
   );

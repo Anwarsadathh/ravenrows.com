@@ -1,503 +1,539 @@
 "use client";
 
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Zap,
+  CalendarRange,
+  MapPin,
   Mic2,
+  Sparkles,
   Trophy,
+  Users,
   Gamepad2,
-  Megaphone,
-  Camera,
+  GraduationCap,
+  Flame,
 } from "lucide-react";
 
-const eventServices = [
+const featuredEvents = [
+  {
+    title: "Free Fire MAX India Cup 2025",
+    category: "Esports Event",
+    location: "Lucknow",
+    description:
+      "Venue coordination and execution support at Ekana Indoor Stadium for one of India’s biggest esports events, delivered with seamless planning and high-energy on-ground management.",
+    tags: ["Esports", "Venue Coordination", "Execution"],
+    image: "/images/events/freefire/cover.jpg",
+    accent: "from-violet-500/25 via-cyan-400/10 to-transparent",
+  },
+  {
+    title: "Armaan Malik Concert",
+    category: "Concert Production",
+    location: "India",
+    description:
+      "Premium concert execution built around audience experience, show energy, and strong on-ground coordination for a memorable live entertainment moment.",
+    tags: ["Concert", "Live", "Audience Experience"],
+    image: "/images/events/armaan-malik/cover.jpg",
+    accent: "from-orange-500/20 via-pink-400/10 to-transparent",
+  },
+  {
+    title: "Jabalpur Royal Lions Outreach",
+    category: "Sports Outreach",
+    location: "Gwalior & Indore",
+    description:
+      "Audience-facing outreach experiences connecting players and fans through school activations, community engagement, media moments, and energetic event execution.",
+    tags: ["Outreach", "Cricket", "Community"],
+    image: "/images/events/jabalpur-royal-lions/cover.jpg",
+    accent: "from-cyan-500/20 via-violet-400/10 to-transparent",
+  },
+];
+
+const servicePillars = [
   {
     icon: Mic2,
-    num: "01",
-    title: "Concert Management",
-    desc: "End-to-end planning and execution for live concerts, artist performances, and entertainment experiences.",
-    accent: "#7c3aed",
-    items: ["Stage Production", "Artist Management", "Lighting & Sound", "Crowd Management"],
+    title: "Concerts & Live Shows",
+    description:
+      "Artist-led productions, audience movement, and premium execution for memorable live events.",
   },
   {
     icon: Trophy,
-    num: "02",
-    title: "Sports League Management",
-    desc: "Comprehensive tournament operations, fan engagement, branding, promotions, and league management.",
-    accent: "#06b6d4",
-    items: ["Tournament Ops", "Team Coordination", "Fan Engagement", "Broadcast Support"],
+    title: "Sports Promotions",
+    description:
+      "League marketing, stadium fill, outreach drives, and team-led fan engagement campaigns.",
+  },
+  {
+    icon: Users,
+    title: "On-ground Activations",
+    description:
+      "Community engagement, promotional activity, crowd interaction, and high-touch brand experiences.",
   },
   {
     icon: Gamepad2,
-    num: "03",
-    title: "Gaming & Youth Events",
-    desc: "Interactive gaming events and youth-focused entertainment experiences designed for participation and energy.",
-    accent: "#10b981",
-    items: ["Gaming Tournaments", "Live Streaming", "Stage Setup", "Audience Activities"],
+    title: "Gaming & Esports",
+    description:
+      "Venue finalisation, event operations, and execution support for large-scale gaming experiences.",
   },
   {
-    icon: Megaphone,
-    num: "04",
-    title: "Outreach Campaigns",
-    desc: "School activations, college campaigns, community programs, and on-ground promotional experiences.",
-    accent: "#f97316",
-    items: ["School Activations", "College Campaigns", "Influencer Outreach", "Community Programs"],
+    icon: GraduationCap,
+    title: "Education Outreach",
+    description:
+      "Admission trials, counselling programs, and campus-facing engagement events across regions.",
   },
   {
-    icon: Camera,
-    num: "05",
-    title: "Event Coverage",
-    desc: "Real-time content production, reels, photography, videography, highlights, and social media management.",
-    accent: "#e879f9",
-    items: ["Live Coverage", "Social Media", "Reels & Highlights", "Photography"],
+    icon: Flame,
+    title: "Promotional Campaigns",
+    description:
+      "Audience-building campaigns, regional outreach, and visibility programs that drive participation.",
   },
 ];
 
-const featuredCases = [
+const eventArchive = [
   {
-    title: "Armaan Malik Live Concert",
-    venue: "Ekana Stadium, Lucknow",
-    desc: "Successfully organized and executed a large-scale entertainment experience with premium production quality and audience engagement.",
-    color: "#7c3aed",
-    size: "large",
+    title: "Sports Admission Trials",
+    subtitle: "The Sports School, Bangalore",
+    meta: "Uttar Pradesh · Bihar · J&K",
+    type: "Education Outreach",
+    image: "/images/events/tss-cricket-talent-hunt/cover.jpg",
   },
   {
-    title: "King Live Concert",
-    venue: "Full Production Management",
-    desc: "Complete event production including stage design, lighting, sound, artist hospitality, crowd engagement, and venue operations.",
-    color: "#06b6d4",
-    size: "medium",
+    title: "Jain University Meets",
+    subtitle: "Spot counselling, career counselling, educators meet",
+    meta: "Bangalore",
+    type: "Education Activation",
+    image: "/images/events/jain-university/cover.jpg",
   },
   {
-    title: "Doctor's Cricket League — Own IP",
-    venue: "Season 1: 8 Hospitals → Season 2: 16 Hospitals",
-    desc: "Raven Rows conceptualized and created Doctor’s Cricket League, a unique sports and networking platform for the medical community with strong season-over-season growth.",
-    color: "#f97316",
-    size: "large",
+    title: "Armaan Malik Concert",
+    subtitle: "Large-scale concert experience",
+    meta: "Live Entertainment",
+    type: "Concert",
+    image: "/images/events/armaan-malik/cover.jpg",
   },
   {
-    title: "UP T20 & WPL Campaigns",
-    venue: "40K+ Audience Reach",
-    desc: "Sports outreach campaigns, audience engagement, social media coverage, and promotional support for major cricket tournaments.",
-    color: "#10b981",
-    size: "small",
+    title: "UP Warriorz Stadium Fill",
+    subtitle: "Audience turnout and promotion",
+    meta: "WPL",
+    type: "Sports Marketing",
+    image: "/images/events/up-warriorz/cover.jpg",
+  },
+  {
+    title: "UPT20 Season 2",
+    subtitle: "Marketing and stadium fill",
+    meta: "League Campaign",
+    type: "Sports Promotion",
+    image: "/images/events/upt20-season-2/cover.jpg",
+  },
+  {
+    title: "Kanpur Superstars",
+    subtitle: "Outreach and promotional campaign",
+    meta: "UPT20 Season 3",
+    type: "Team Outreach",
+    image: "/images/events/kanpur-superstars/cover.jpg",
+  },
+  {
+    title: "Free Fire MAX India Cup 2025",
+    subtitle: "Venue coordination and event execution",
+    meta: "Ekana Indoor Stadium · Lucknow",
+    type: "Esports Event",
+    image: "/images/events/freefire/cover.jpg",
+  },
+  {
+    title: "Doctor's Warrior Cricket League",
+    subtitle: "Season 1 · Lucknow edition",
+    meta: "Cricket League",
+    type: "League Event",
+    image: "/images/events/doctors-warrior-season-1/cover.jpg",
+  },
+  {
+    title: "Doctor's Cricket League",
+    subtitle: "Season 2 · Lucknow edition",
+    meta: "Cricket League",
+    type: "League Event",
+    image: "/images/events/doctors-cricket-season-2/cover.jpg",
+  },
+  {
+    title: "UP Doctor's League",
+    subtitle: "Season 3 · Lucknow edition",
+    meta: "Cricket League",
+    type: "League Event",
+    image: "/images/events/up-doctors-league-season-3/cover.jpg",
+  },
+  {
+    title: "Jabalpur Royal Lions",
+    subtitle: "Outreach activity",
+    meta: "Madhya Pradesh T20",
+    type: "Sports Outreach",
+    image: "/images/events/jabalpur-royal-lions/cover.jpg",
   },
 ];
 
-const listCases = [
+const detailedStories = [
   {
-    title: "MC Square Live",
-    venue: "Lulu Mall, Lucknow",
+    title: "Jabalpur Royal Lions – Outreach Activity",
+    label: "Sports Outreach",
+    body: [
+      "Raven Rows successfully organized and managed engaging outreach activities for Jabalpur Royal Lions across Gwalior and Indore, creating memorable experiences that brought the team closer to young cricket enthusiasts and fans.",
+      "The sessions were filled with energy, excitement, and inspiring interactions as players connected with students, shared their journeys, and celebrated the spirit of cricket. Through seamless execution, audience engagement, and impactful on-ground management, Raven Rows helped strengthen the bond between the team and its supporters while building meaningful community engagement.",
+      "From coordination and crowd management to media coverage and content creation, Raven Rows ensured the outreach activities reflected the passion, enthusiasm, and growing fan culture surrounding Jabalpur Royal Lions.",
+    ],
   },
   {
-    title: "Free Fire Event",
-    venue: "Ekana Indoor Stadium",
+    title: "Free Fire MAX India Cup 2025",
+    label: "Esports Event",
+    body: [
+      "Raven Rows successfully facilitated venue coordination and execution support for the Free Fire MAX India Cup 2025 in Lucknow, with the event hosted at the prestigious Ekana Indoor Stadium.",
+      "From venue booking management to on-ground coordination, Raven Rows ensured a smooth and professional setup for one of the country’s biggest esports events. The event brought together gaming enthusiasts, competitive players, and large-scale audience engagement, creating an electrifying atmosphere for the tournament.",
+      "With efficient planning, seamless coordination, and strong execution capabilities, Raven Rows played a key role in delivering a high-impact esports experience at a premier venue, further expanding its footprint in large-scale entertainment and gaming events.",
+    ],
   },
-  {
-    title: "Delhi Pradesh Premier League",
-    venue: "Season-Long Partnership",
-  },
-  {
-    title: "UP Doctors League — Season 3",
-    venue: "Lucknow",
-  },
-  {
-    title: "Jabalpur Royal Lions — MPL",
-    venue: "3-Year Collaboration",
-  },
-  {
-    title: "Sports School Talent Hunt",
-    venue: "Lucknow · Jammu · Gorakhpur · Noida · Purnea",
-  },
-  {
-    title: "Riva Kenko Pharma",
-    venue: "Outreach & Digital Campaigns",
-  },
-];
-
-const stats = [
-  { num: "40K+", label: "Fans Reached", color: "bg-violet-500" },
-  { num: "8→16", label: "DCL Growth", color: "bg-cyan-500" },
-  { num: "3yr", label: "Collaborations", color: "bg-orange-500" },
 ];
 
 export function EventWorld() {
   return (
-    <section id="events" className="relative overflow-hidden px-4 py-16 md:px-6 md:py-24">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fcfcfb_0%,#f7f8fb_50%,#f9f6ff_100%)]" />
-      <div className="absolute left-[-120px] top-[80px] -z-10 h-[320px] w-[320px] rounded-full bg-violet-300/10 blur-3xl" />
-      <div className="absolute right-[-80px] top-[180px] -z-10 h-[280px] w-[280px] rounded-full bg-cyan-300/10 blur-3xl" />
-      <div className="absolute bottom-[-140px] left-[35%] -z-10 h-[340px] w-[340px] rounded-full bg-orange-200/10 blur-3xl" />
+    <section
+      id="events"
+      className="relative overflow-hidden bg-[#060606] text-white"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.16),transparent_24%),radial-gradient(circle_at_top_right,rgba(6,182,212,0.10),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(251,146,60,0.10),transparent_28%)]" />
+      <div className="absolute left-0 top-20 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
+      <div className="absolute right-0 top-80 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
 
-      <div className="mx-auto max-w-7xl">
-        {/* HERO */}
-        <div className="grid gap-12 border-b border-black/[0.06] pb-16 pt-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
-          <div className="max-w-2xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/85 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-neutral-500 shadow-sm backdrop-blur-sm">
-              <Zap className="h-3.5 w-3.5 text-teal-600" />
-              Events & Experiences
-            </div>
+      <div className="relative">
+        <section className="px-4 pb-10 pt-8 md:px-6 md:pb-14 md:pt-12">
+          <div className="section-shell">
+            <motion.div
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-end"
+            >
+              <div className="max-w-4xl">
+                <p className="mb-4 text-[11px] uppercase tracking-[0.26em] text-white/55">
+                  Liveworks
+                </p>
 
-           <h2 className="max-w-[7.6ch] text-[46px] font-semibold leading-[0.92] tracking-[-0.06em] text-neutral-950 sm:text-[52px] md:text-[56px] lg:text-[60px] xl:text-[64px]">
-              We create
-              <span className="block">experiences</span>
-            <span className="mt-1 block text-neutral-300">people remember.</span>
-            </h2>
+                <h1 className="max-w-[10ch] text-[42px] font-semibold leading-[0.92] tracking-[-0.07em] text-white sm:text-[58px] md:text-[76px] lg:text-[88px]">
+                  Events. Energy.
+                  <span className="block text-white/72">Experiences.</span>
+                </h1>
 
-            <p className="mt-6 max-w-[33rem] text-[15px] leading-8 text-neutral-600 md:text-[16px]">
-              Raven Rows specializes in large-scale event production, sports activations,
-              live entertainment, outreach campaigns, and experiential marketing built
-              with planning, energy, and audience connection.
-            </p>
+                <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">
+                  From concerts and league promotions to esports events,
+                  educational outreach, and large-scale activations, Raven Rows
+                  creates live experiences that move people and leave a lasting
+                  impression.
+                </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                className="inline-flex h-11 items-center rounded-full bg-neutral-950 px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-neutral-800"
-              >
-                Get an Event Quote
-              </a>
-              <a
-                href="#event-cases"
-                className="inline-flex h-11 items-center rounded-full border border-black/[0.08] bg-white/85 px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-900 transition hover:bg-neutral-50"
-              >
-                Explore Major Events
-              </a>
-            </div>
-          </div>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Link
+                    href="#event-archive"
+                    className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
+                  >
+                    Explore Archive
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
 
-         <div className="grid gap-5 lg:grid-cols-[1.22fr_0.78fr]">
-           <div className="relative min-h-[420px] overflow-hidden rounded-[34px] border border-black/[0.05] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition duration-700 hover:scale-[1.03]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to top, rgba(8,12,24,0.76), rgba(8,12,24,0.14)), url('/images/concert.jpg')",
-                }}
-              />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(6,182,212,0.16),transparent_30%)]" />
-
-              <div className="relative flex h-full flex-col justify-between p-7 text-white">
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-black/20 px-3 py-1.5 backdrop-blur">
-                  <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-white/80">
-                    Major events
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="max-w-[13ch] text-[26px] font-semibold leading-[1.06] tracking-[-0.04em] md:text-[34px]">
-                    Concerts, leagues, gaming events, and campaigns at scale.
-                  </h3>
-                  <p className="mt-4 max-w-md text-[14px] leading-7 text-white/82">
-                    From sold-out stadium concerts to sports leagues, gaming activations,
-                    and outreach campaigns, Raven Rows builds experiences that carry
-                    energy, scale, and audience impact.
-                  </p>
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-white/10"
+                  >
+                    Start an Event Project
+                  </Link>
                 </div>
               </div>
 
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-              {stats.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[26px] border border-black/[0.05] bg-white p-6 shadow-[0_10px_24px_rgba(15,23,42,0.035)]"
-                >
-                  <div className={`mb-3 h-1.5 w-16 rounded-full ${item.color}`} />
-                  <p className="text-[32px] font-semibold tracking-[-0.05em] text-neutral-950">
-                    {item.num}
-                  </p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-neutral-400">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-
-              <div className="relative overflow-hidden rounded-[26px] border border-black/[0.05] bg-[linear-gradient(135deg,#0f172a_0%,#111827_45%,#0f766e_100%)] p-5 text-white shadow-[0_18px_40px_rgba(15,23,42,0.12)] sm:col-span-3 lg:col-span-1">
-                <div className="absolute right-[-18px] top-[-18px] h-24 w-24 rounded-full bg-teal-300/20 blur-2xl" />
-                <p className="text-[10px] uppercase tracking-[0.24em] text-white/55">
-                  Raven Rows
-                </p>
-                <p className="mt-3 text-[22px] font-semibold leading-[1.08] tracking-[-0.04em]">
-                  Events that carry scale and audience energy.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* SERVICES */}
-        <div className="py-16 md:py-20">
-          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="mb-3 text-sm uppercase tracking-[0.22em] text-neutral-400">
-                Event services
-              </p>
-              <h3 className="text-4xl font-semibold leading-[0.95] tracking-[-0.06em] text-neutral-950 md:text-6xl">
-                Experience design
-                <span className="block text-neutral-400">with execution depth.</span>
-              </h3>
-            </div>
-            <p className="max-w-xl text-[15px] leading-8 text-neutral-600">
-              Strategic planning, flawless coordination, creative production, and audience
-              engagement — from concerts and leagues to outreach and digital coverage.
-            </p>
-          </div>
-
-          <div className="grid gap-8 xl:grid-cols-12">
-            {/* Featured service */}
-            <div className="xl:col-span-5">
-              <div className="relative overflow-hidden rounded-[34px] border border-black/[0.06] bg-[linear-gradient(135deg,#ffffff_0%,#f7f8fc_56%,#eefcf7_100%)] p-8 shadow-[0_18px_45px_rgba(15,23,42,0.05)]">
-                <div className="absolute right-[-30px] top-[-30px] h-32 w-32 rounded-full bg-violet-300/15 blur-3xl" />
-                <div className="absolute bottom-[-20px] left-[-20px] h-28 w-28 rounded-full bg-teal-300/10 blur-3xl" />
-
-                <div className="relative flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-neutral-400">
-                      Signature service · 01
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                {[
+                  "Concerts & live shows",
+                  "Sports leagues & outreach",
+                  "Esports & on-ground execution",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[24px] border border-white/10 bg-white/[0.04] px-4 py-4 backdrop-blur-sm"
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-white/45">
+                      Capability
                     </p>
-                    <h4 className="mt-3 max-w-[10ch] text-[34px] font-semibold leading-[1.02] tracking-[-0.05em] text-neutral-950 md:text-[42px]">
-                      Concert Management
-                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-white/82">{item}</p>
                   </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-black/[0.05]">
-                    <Mic2 className="h-5 w-5 text-violet-600" />
-                  </div>
-                </div>
-
-                <p className="mt-6 max-w-md text-[15px] leading-8 text-neutral-600">
-                  End-to-end planning and execution for live concerts, artist performances,
-                  and entertainment experiences with seamless delivery and strong audience connection.
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                  Featured Cases
                 </p>
-
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  {eventServices[0].items.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-black/[0.05] bg-white/80 px-4 py-3 text-sm text-neutral-700 shadow-[0_8px_20px_rgba(15,23,42,0.03)]"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
+                <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                  Event work at scale.
+                </h2>
               </div>
             </div>
 
-            {/* Service list */}
-            <div className="space-y-4 xl:col-span-3">
-              {eventServices.slice(1, 4).map(({ icon: Icon, num, title, desc, accent }) => (
-                <div
-                  key={title}
-                  className="group border-b border-black/[0.06] pb-4 last:border-b-0 last:pb-0"
-                >
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl"
-                      style={{
-                        backgroundColor: `${accent}12`,
-                        border: `1px solid ${accent}20`,
-                      }}
-                    >
-                      <Icon className="h-5 w-5" style={{ color: accent }} />
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="text-[10px] uppercase tracking-[0.22em]"
-                          style={{ color: accent }}
-                        >
-                          {num}
-                        </span>
-                        <div className="h-px flex-1 bg-black/[0.06]" />
-                      </div>
-
-                      <h4 className="mt-3 text-[24px] font-semibold leading-[1.08] tracking-[-0.04em] text-neutral-950">
-                        {title}
-                      </h4>
-                      <p className="mt-2 text-[14px] leading-7 text-neutral-600">
-                        {desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Layered visual / info block */}
-            <div className="xl:col-span-4">
-              <div className="relative min-h-[420px] overflow-hidden rounded-[34px] bg-[linear-gradient(145deg,#0b1220_0%,#111827_40%,#0f766e_100%)] p-7 text-white shadow-[0_24px_60px_rgba(15,23,42,0.16)]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.22),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(6,182,212,0.18),transparent_30%)]" />
-                <div className="absolute right-8 top-8 h-36 w-36 rounded-full border border-white/10" />
-                <div className="absolute right-16 top-16 h-20 w-20 rounded-full border border-white/10" />
-                <div className="absolute left-8 bottom-10 text-[160px] font-semibold leading-none tracking-[-0.1em] text-white/[0.04]">
-                  RR
-                </div>
-
-                <div className="relative">
-                  <p className="text-[10px] uppercase tracking-[0.24em] text-white/55">
-                    Event coverage · 05
-                  </p>
-                  <h4 className="mt-3 max-w-[11ch] text-[30px] font-semibold leading-[1.04] tracking-[-0.04em]">
-                    Real-time stories for live moments.
-                  </h4>
-                  <p className="mt-4 max-w-[28ch] text-[14px] leading-7 text-white/78">
-                    Reels, highlights, videography, photography, and social-first content management
-                    designed to keep event energy moving online and on-ground.
-                  </p>
-                </div>
-
-                <div className="relative mt-8 space-y-3">
-                  {eventServices[4].items.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/82 backdrop-blur-sm"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="absolute bottom-6 right-6 rounded-full border border-white/10 bg-white/8 px-3 py-1.5 backdrop-blur-sm">
-                  <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.24em] text-white/58">
-                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300/80" />
-                    Creative Flow
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CASE STUDIES */}
-        <div id="event-cases" className="border-t border-black/[0.06] py-16 md:py-20">
-          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="mb-3 text-sm uppercase tracking-[0.22em] text-neutral-400">
-                Major projects
-              </p>
-              <h3 className="text-4xl font-semibold leading-[0.95] tracking-[-0.06em] text-neutral-950 md:text-6xl">
-                Case studies
-                <span className="block text-neutral-400">at scale.</span>
-              </h3>
-            </div>
-            <p className="max-w-xl text-[15px] leading-8 text-neutral-600">
-              Concerts, cricket leagues, gaming events, outreach campaigns, and branded
-              activations executed with premium quality and audience-first thinking.
-            </p>
-          </div>
-
-          <div className="grid gap-6 xl:grid-cols-12">
-            <div className="space-y-6 xl:col-span-8">
-              {featuredCases.map((item, idx) => (
-                <div
-                  key={item.title}
-                  className={`group relative overflow-hidden rounded-[32px] border border-black/[0.06] bg-white p-6 shadow-[0_12px_35px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] md:p-8 ${
-                    idx % 2 === 0 ? "md:ml-0" : "md:ml-12"
-                  }`}
+            <div className="grid gap-4 lg:grid-cols-3">
+              {featuredEvents.map((event, index) => (
+                <motion.article
+                  key={event.title}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
                 >
                   <div
-                    className="mb-5 h-1.5 w-16 rounded-full"
-                    style={{ background: item.color }}
+                    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.90), rgba(5,5,5,0.22)), url('${event.image}')`,
+                    }}
+                  />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${event.accent}`}
                   />
 
-                  <div className="grid gap-5 md:grid-cols-[1fr_0.78fr] md:items-start">
-                    <div>
-                      <h4 className="max-w-[15ch] text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-neutral-950 md:text-[36px]">
-                        {item.title}
-                      </h4>
-                      <p
-                        className="mt-3 text-[11px] uppercase tracking-[0.22em]"
-                        style={{ color: item.color }}
-                      >
-                        {item.venue}
-                      </p>
+                  <div className="relative flex min-h-[380px] flex-col justify-between p-5 sm:min-h-[420px] sm:p-6 lg:min-h-[460px]">
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75">
+                        {event.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">
+                        <MapPin className="h-3 w-3" />
+                        {event.location}
+                      </span>
                     </div>
 
                     <div>
-                      <p className="text-[14px] leading-7 text-neutral-600">
-                        {item.desc}
+                      <h3 className="max-w-[12ch] text-[28px] font-semibold leading-[1] tracking-[-0.05em] text-white sm:text-[32px]">
+                        {event.title}
+                      </h3>
+
+                      <p className="mt-4 max-w-sm text-[14px] leading-7 text-white/78">
+                        {event.description}
                       </p>
-                      <div className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.2em] text-neutral-400">
-                        View project
-                        <ArrowUpRight className="h-4 w-4" />
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {event.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[11px] text-white/78"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.article>
               ))}
             </div>
-
-            <div className="xl:col-span-4">
-              <div className="sticky top-24 rounded-[32px] border border-black/[0.06] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfc_100%)] p-6 shadow-[0_12px_35px_rgba(15,23,42,0.04)] md:p-7">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">
-                  Additional projects
-                </p>
-
-                <div className="mt-6 space-y-5">
-                  {listCases.map((item, index) => (
-                    <div
-                      key={item.title}
-                      className="border-b border-black/[0.05] pb-4 last:border-b-0 last:pb-0"
-                    >
-                      <div className="flex items-start gap-3">
-                        <span className="mt-1 text-[10px] uppercase tracking-[0.22em] text-neutral-300">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div>
-                          <h5 className="text-[18px] font-semibold leading-[1.15] tracking-[-0.03em] text-neutral-950">
-                            {item.title}
-                          </h5>
-                          <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-neutral-400">
-                            {item.venue}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
+        </section>
 
-        {/* CTA BAND */}
-        <div className="pb-4 pt-4 md:pt-6">
-          <div className="relative overflow-hidden rounded-[34px] border border-black/[0.06] bg-[linear-gradient(135deg,#ffffff_0%,#f8fafc_40%,#f3f0ff_100%)] px-8 py-8 shadow-[0_14px_35px_rgba(15,23,42,0.05)] md:px-10 md:py-10">
-            <div className="absolute right-[-30px] top-[-30px] h-32 w-32 rounded-full bg-violet-300/12 blur-3xl" />
-            <div className="absolute left-[-30px] bottom-[-30px] h-32 w-32 rounded-full bg-cyan-300/12 blur-3xl" />
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                What We Execute
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                End-to-end event capability.
+              </h2>
+            </div>
 
-            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="mb-3 text-sm uppercase tracking-[0.22em] text-neutral-400">
-                  Final call
-                </p>
-                <p className="max-w-[18ch] text-[30px] font-semibold leading-[1.02] tracking-[-0.05em] text-neutral-950 md:text-[40px]">
-                  Ready to build the next unforgettable experience?
-                </p>
-              </div>
-
-              <div className="max-w-2xl">
-                <p className="text-[15px] leading-8 text-neutral-600">
-                  Whether it’s a concert, sports league, gaming event, or outreach campaign,
-                  Raven Rows is ready to build the experience.
-                </p>
-
-                <div className="mt-5">
-                  <a
-                    href="#contact"
-                    className="inline-flex h-11 items-center rounded-full bg-neutral-950 px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-neutral-800"
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {servicePillars.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{
+                      duration: 0.7,
+                      delay: index * 0.05,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm"
                   >
-                    Tell us your vision
-                  </a>
-                </div>
-              </div>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/10">
+                      <Icon className="h-5 w-5 text-white/82" />
+                    </div>
+                    <h3 className="mt-5 text-[22px] font-semibold leading-[1] tracking-[-0.04em] text-white">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-7 text-white/68">
+                      {service.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
-        </div>
+        </section>
+
+        <section
+          id="event-archive"
+          className="px-4 py-10 md:px-6 md:py-14"
+        >
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                Event Archive
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Selected Event Work.
+              </h2>
+              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-white/68">
+                Organised as event collections so each project can hold multiple
+                images, moments, and outputs — from concerts and league promotions
+                to education outreach, esports execution, and on-ground activations.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {eventArchive.map((item, index) => (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.65,
+                    delay: index * 0.03,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="group overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
+                >
+                  <div className="relative h-44 overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.05]"
+                      style={{
+                        backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.68), rgba(5,5,5,0.16)), url('${item.image}')`,
+                      }}
+                    />
+                    <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      {item.type}
+                    </div>
+                  </div>
+
+                  <div className="p-4">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-white/42">
+                      {item.meta}
+                    </p>
+                    <h3 className="mt-3 text-[20px] font-semibold leading-[1.05] tracking-[-0.04em] text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-white/65">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                Detailed Case Stories
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Execution, audiences, and impact.
+              </h2>
+              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-white/68">
+                A closer look at how Raven Rows handles outreach, venue coordination,
+                crowd engagement, and on-ground execution across sports and esports events.
+              </p>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              {detailedStories.map((story, index) => (
+                <motion.article
+                  key={story.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.65,
+                    delay: index * 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6 md:p-7"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
+                    <CalendarRange className="h-3.5 w-3.5" />
+                    {story.label}
+                  </div>
+
+                  <h3 className="mt-5 text-[24px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[28px]">
+                    {story.title}
+                  </h3>
+
+                  <div className="mt-5 space-y-4">
+                    {story.body.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="text-[14px] leading-7 text-white/68 md:text-[15px] md:leading-8"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 pb-16 pt-8 md:px-6 md:pb-24">
+          <div className="section-shell">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm sm:p-8 lg:p-10"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.10),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(124,58,237,0.14),transparent_28%)]" />
+
+              <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-2xl">
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                    Final Call
+                  </p>
+                  <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                    Planning a concert, campaign, activation, or live event?
+                  </h2>
+                  <p className="mt-4 text-[15px] leading-7 text-white/68">
+                    Raven Rows brings together planning, promotion, audience
+                    engagement, on-ground operations, and visual storytelling
+                    into one seamless event workflow.
+                  </p>
+                </div>
+
+                <Link
+                  href="#contact"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
+                >
+                  Start a Project
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </section>
   );
