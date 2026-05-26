@@ -52,11 +52,11 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 118, 110, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(251, 146, 60, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 70%),
-    linear-gradient(160deg, #f5f4f0 0%, #f2f3f8 40%, #f7f5f2 100%);
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 118, 110, 0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(124, 58, 237, 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(251, 146, 60, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255, 255, 255, 0.42) 0%, transparent 68%),
+    linear-gradient(160deg, #e8e5de 0%, #e3e6ee 38%, #e9e5de 100%);
   color: #0f172a;
 }
 
@@ -71,7 +71,15 @@ body {
 .texture-grain {
   position: relative;
 }
-
+@media (max-width: 640px) {
+  body {
+    background:
+      radial-gradient(ellipse 90% 58% at 10% -10%, rgba(15, 118, 110, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 68% 46% at 90% 8%, rgba(124, 58, 237, 0.10) 0%, transparent 52%),
+      radial-gradient(ellipse 80% 56% at 50% 110%, rgba(251, 146, 60, 0.09) 0%, transparent 58%),
+      linear-gradient(160deg, #dfdbd2 0%, #dbe0e9 42%, #e2ddd5 100%);
+  }
+}
 .texture-grain::before {
   content: "";
   position: absolute;
