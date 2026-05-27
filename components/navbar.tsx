@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,17 +16,14 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-black/5 bg-[color:color-mix(in_srgb,var(--background)_82%,transparent)] backdrop-blur-2xl dark:border-white/10">
       <div className="section-shell flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--foreground)] text-[13px] font-semibold tracking-[0.08em] text-white dark:bg-white dark:text-black md:h-11 md:w-11">
-            RR
-          </div>
-
-          <div className="min-w-0">
-            <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--foreground)] sm:text-xs">
-              Raven Rows
-            </p>
-            <p className="truncate text-[11px] text-[var(--muted-foreground)]">
-              Where Stories Take Flight
-            </p>
+          <div className="relative h-10 w-[132px] shrink-0 md:h-11 md:w-[148px]">
+            <Image
+              src="/images/logo.png"
+              alt="Raven Rows"
+              fill
+              className="object-contain object-left"
+              priority
+            />
           </div>
         </Link>
 
@@ -79,12 +77,14 @@ export function Navbar() {
             >
               <div className="flex h-full flex-col">
                 <div className="border-b border-black/5 pb-5 dark:border-white/10">
-                  <p className="text-[10px] uppercase tracking-[0.24em] text-[var(--muted-foreground)]">
-                    Navigation
-                  </p>
-                  <p className="mt-2 text-lg font-semibold text-[var(--foreground)]">
-                    Raven Rows
-                  </p>
+                  <div className="relative h-9 w-[132px]">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Raven Rows"
+                      fill
+                      className="object-contain object-left"
+                    />
+                  </div>
                 </div>
 
                 <div className="mt-6 flex flex-col gap-1">

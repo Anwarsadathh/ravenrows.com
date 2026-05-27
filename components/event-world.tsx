@@ -224,6 +224,12 @@ const eventArchive = [
       "/images/events/doctors-warrior-season-1/1.jpg",
       "/images/events/doctors-warrior-season-1/2.jpg",
       "/images/events/doctors-warrior-season-1/3.jpg",
+      "/images/events/doctors-warrior-season-1/4.jpg",
+      "/images/events/doctors-warrior-season-1/5.jpg",
+      "/images/events/doctors-warrior-season-1/6.jpg",
+      "/images/events/doctors-warrior-season-1/7.jpg",
+     
+
     ],
   },
   {
