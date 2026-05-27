@@ -13,7 +13,6 @@ import {
   Gamepad2,
   GraduationCap,
   Flame,
-  ImageIcon,
 } from "lucide-react";
 
 const featuredEvents = [
@@ -24,6 +23,7 @@ const featuredEvents = [
     description:
       "Venue coordination and execution support at Ekana Indoor Stadium for one of India’s biggest esports events, delivered with seamless planning and high-energy on-ground management.",
     tags: ["Esports", "Venue Coordination", "Execution"],
+    mediaType: "image",
     image: "/images/events/freefire/cover.jpg",
     gallery: [
       "/images/events/freefire/1.jpg",
@@ -39,6 +39,7 @@ const featuredEvents = [
     description:
       "Premium concert execution built around audience experience, show energy, and strong on-ground coordination for a memorable live entertainment moment.",
     tags: ["Concert", "Live", "Audience Experience"],
+    mediaType: "image",
     image: "/images/events/armaan-malik/cover.jpg",
     gallery: [
       "/images/events/armaan-malik/1.jpg",
@@ -54,6 +55,9 @@ const featuredEvents = [
     description:
       "Audience-facing outreach experiences connecting players and fans through school activations, community engagement, media moments, and energetic event execution.",
     tags: ["Outreach", "Cricket", "Community"],
+    mediaType: "video",
+    video: "/images/events/jabalpur-royal-lions/cover.mp4",
+    poster: "/images/events/jabalpur-royal-lions/poster.jpg",
     image: "/images/events/jabalpur-royal-lions/cover.jpg",
     gallery: [
       "/images/events/jabalpur-royal-lions/1.jpg",
@@ -397,15 +401,36 @@ export function EventWorld() {
                   }}
                   className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.90), rgba(5,5,5,0.22)), url('${event.image}')`,
-                    }}
-                  />
+                  {event.mediaType === "video" ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={event.poster}
+                      className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                      ref={(node) => {
+                        if (node) {
+                          node.setAttribute("webkit-playsinline", "true");
+                        }
+                      }}
+                    >
+                      <source src={event.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
+                      style={{
+                        backgroundImage: `linear-gradient(to top, rgba(5,5,5,0.90), rgba(5,5,5,0.22)), url('${event.image}')`,
+                      }}
+                    />
+                  )}
+
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${event.accent}`}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
                   <div className="relative flex min-h-[380px] flex-col justify-between p-5 sm:min-h-[420px] sm:p-6 lg:min-h-[460px]">
                     <div className="flex items-start justify-between gap-3">
@@ -544,11 +569,6 @@ export function EventWorld() {
                     <p className="mt-2 text-sm leading-6 text-white/65">
                       {item.subtitle}
                     </p>
-
-                    <div className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/45">
-                      <ImageIcon className="h-3.5 w-3.5" />
-                      Multi-image project
-                    </div>
                   </div>
                 </motion.article>
               ))}
