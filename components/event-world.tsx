@@ -136,6 +136,10 @@ const eventArchive = [
       "/images/events/jain-university/1.jpg",
       "/images/events/jain-university/2.jpg",
       "/images/events/jain-university/3.jpg",
+       "/images/events/jain-university/4.jpg",
+        "/images/events/jain-university/5.jpg",
+         "/images/events/jain-university/6.jpg",
+          "/images/events/jain-university/7.jpg",
     ],
   },
   {
@@ -172,6 +176,7 @@ const eventArchive = [
       "/images/events/upt20-season-2/1.jpg",
       "/images/events/upt20-season-2/2.jpg",
       "/images/events/upt20-season-2/3.jpg",
+      "/images/events/upt20-season-2/4.jpg",
     ],
   },
   {
