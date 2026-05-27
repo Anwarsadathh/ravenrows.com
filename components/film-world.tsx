@@ -11,6 +11,9 @@ import {
   Sparkles,
   Trophy,
   Video,
+  Wand2,
+  Film,
+  ImageIcon,
 } from "lucide-react";
 
 const featuredFilms = [
@@ -20,6 +23,11 @@ const featuredFilms = [
     description:
       "Raven Rows captured the scale, devotion, and cultural magnificence of Ayodhya Deepotsav through cinematic coverage, drone visuals, and emotionally driven visual storytelling.",
     image: "/images/film/ayodhya-deepotsav/cover.jpg",
+    gallery: [
+      "/images/film/ayodhya-deepotsav/1.jpg",
+      "/images/film/ayodhya-deepotsav/2.jpg",
+      "/images/film/ayodhya-deepotsav/3.jpg",
+    ],
     tags: ["Drone", "Festival", "Cultural", "Cinematic"],
     accent: "from-orange-500/20 via-amber-300/10 to-transparent",
   },
@@ -29,6 +37,11 @@ const featuredFilms = [
     description:
       "From illuminated ghats and sacred rituals to performances and devotional gatherings, Raven Rows transformed Dev Deepawali into a visually immersive storytelling experience.",
     image: "/images/film/dev-deepawali/cover.jpg",
+    gallery: [
+      "/images/film/dev-deepawali/1.jpg",
+      "/images/film/dev-deepawali/2.jpg",
+      "/images/film/dev-deepawali/3.jpg",
+    ],
     tags: ["Event Film", "Visual Storytelling", "Drone"],
     accent: "from-violet-500/18 via-teal-400/10 to-transparent",
   },
@@ -38,6 +51,11 @@ const featuredFilms = [
     description:
       "A powerful visual narrative capturing the magnitude, emotion, and spiritual atmosphere of one of India’s most iconic gatherings through cinematic framing and scale-driven coverage.",
     image: "/images/film/kumbh/cover.jpg",
+    gallery: [
+      "/images/film/kumbh/1.jpg",
+      "/images/film/kumbh/2.jpg",
+      "/images/film/kumbh/3.jpg",
+    ],
     tags: ["Documentary", "Large Scale", "Emotion"],
     accent: "from-cyan-500/18 via-violet-400/10 to-transparent",
   },
@@ -50,6 +68,11 @@ const adFilms = [
     description:
       "Multiple promotional shoots created for digital campaigns and brand communication, combining lifestyle-driven visuals with sports-led credibility.",
     image: "/images/film/eva-yes/cover.jpg",
+    gallery: [
+      "/images/film/eva-yes/1.jpg",
+      "/images/film/eva-yes/2.jpg",
+      "/images/film/eva-yes/3.jpg",
+    ],
     tags: ["Ad Film", "Brand Campaign", "Product Shoot"],
   },
   {
@@ -58,6 +81,11 @@ const adFilms = [
     description:
       "A campaign featuring Zeeshan Ansari, blending product-led storytelling with strong sports recognition and audience engagement.",
     image: "/images/film/zeeshan-ansari/cover.jpg",
+    gallery: [
+      "/images/film/zeeshan-ansari/1.jpg",
+      "/images/film/zeeshan-ansari/2.jpg",
+      "/images/film/zeeshan-ansari/3.jpg",
+    ],
     tags: ["Sports Branding", "Commercial", "Talent-led"],
   },
   {
@@ -66,20 +94,27 @@ const adFilms = [
     description:
       "Promotional content designed for digital-first brand visibility with sharp product communication and visually engaging execution.",
     image: "/images/film/priyam-garm-gennie/cover.jpg",
+    gallery: [
+      "/images/film/priyam-garm-gennie/1.jpg",
+      "/images/film/priyam-garm-gennie/2.jpg",
+      "/images/film/priyam-garm-gennie/3.jpg",
+    ],
     tags: ["Commercial", "Product", "Campaign"],
   },
 ];
 
 const storyHighlights = [
   {
-    title: "Emotional Storytelling Piece 01",
+    title: "Kumbh",
+    label: "Documentary Storytelling",
     body:
-      "A narrative-led film focused on emotion, character, and visual pacing — built to stay with the audience beyond the final frame.",
+      "An immersive cinematic treatment of scale, movement, devotion, and atmosphere — built around visual rhythm, human emotion, and the spiritual magnitude of the gathering.",
   },
   {
-    title: "Emotional Storytelling Piece 02",
+    title: "Ayodhya Deepotsav",
+    label: "Festival Narrative",
     body:
-      "A second signature storytelling work that showcases Raven Rows’ strength in mood, cinematic structure, and memorable visual narrative.",
+      "A visually rich storytelling piece blending drone scale, devotional atmosphere, and festival energy into a memorable cultural screen experience.",
   },
 ];
 
@@ -99,6 +134,12 @@ const screenSports = [
 ];
 
 const processPillars = [
+  {
+    icon: Film,
+    title: "Short Films",
+    description:
+      "Narrative-led visual storytelling built around mood, emotion, character, and screen presence.",
+  },
   {
     icon: Clapperboard,
     title: "Ad Films & Campaign Shoots",
@@ -122,6 +163,57 @@ const processPillars = [
     title: "Festival Visual Production",
     description:
       "Drone visuals, rituals, crowd scale, and emotionally resonant cultural storytelling.",
+  },
+  {
+    icon: Wand2,
+    title: "Visual Effects & Post",
+    description:
+      "Finishing, polish, cinematic transitions, and post-production craft that sharpen the final frame.",
+  },
+];
+
+const detailedStories = [
+  {
+    title: "Ayodhya Deepotsav",
+    label: "Festival Film",
+    gallery: [
+      "/images/film/ayodhya-deepotsav/1.jpg",
+      "/images/film/ayodhya-deepotsav/2.jpg",
+      "/images/film/ayodhya-deepotsav/3.jpg",
+    ],
+    body: [
+      "Raven Rows captured the divine grandeur and cultural magnificence of Ayodhya Deepotsav through cinematic event coverage, drone visuals, and immersive storytelling.",
+      "From illuminated spaces and devotional atmosphere to performances and ceremonial moments, the production focused on scale, emotion, and cultural resonance across digital-first visual formats.",
+      "The result was a memorable storytelling piece that preserved the celebration’s energy while giving it a polished and cinematic visual identity.",
+    ],
+  },
+  {
+    title: "Dev Deepawali",
+    label: "Cultural Coverage",
+    gallery: [
+      "/images/film/dev-deepawali/1.jpg",
+      "/images/film/dev-deepawali/2.jpg",
+      "/images/film/dev-deepawali/3.jpg",
+    ],
+    body: [
+      "Raven Rows transformed Dev Deepawali into a visually immersive storytelling experience through carefully framed coverage of rituals, lights, performances, and audience atmosphere.",
+      "The production blended wide visual spectacle with intimate moments, allowing the cultural richness of the event to unfold with cinematic depth.",
+      "This approach helped turn a live celebration into a lasting piece of visual storytelling for wider digital audiences.",
+    ],
+  },
+  {
+    title: "EVA YES by Riva Kenko",
+    label: "Brand Campaign",
+    gallery: [
+      "/images/film/eva-yes/1.jpg",
+      "/images/film/eva-yes/2.jpg",
+      "/images/film/eva-yes/3.jpg",
+    ],
+    body: [
+      "Raven Rows created multiple promotional shoots for EVA YES by Riva Kenko, building campaign-ready visuals for digital communication and branded storytelling.",
+      "The campaign blended product-led messaging with lifestyle styling and sports credibility, giving the brand a stronger visual identity across audience-facing content.",
+      "From planning and creative direction to final execution, the work was designed to feel polished, energetic, and commercially effective.",
+    ],
   },
 ];
 
@@ -155,8 +247,8 @@ export function FilmWorld() {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">
-                  From ad films and documentary-style coverage to sports promos,
-                  festival storytelling, and emotionally driven visual narratives,
+                  From short films and ad campaigns to documentary-style coverage,
+                  sports promos, festival storytelling, and post-production craft,
                   Raven Rows creates screenwork with cinematic depth and cultural presence.
                 </p>
 
@@ -180,9 +272,9 @@ export function FilmWorld() {
 
               <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                 {[
-                  "Ad films & branded campaigns",
-                  "Festival and documentary coverage",
-                  "Sports promos & visual storytelling",
+                  "Ad films, short films, and branded campaigns",
+                  "Festival, documentary, and event coverage",
+                  "Sports promos, post, and visual storytelling",
                 ].map((item) => (
                   <div
                     key={item}
@@ -355,7 +447,7 @@ export function FilmWorld() {
                     >
                       <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
                         <CalendarRange className="h-3.5 w-3.5" />
-                        Story Highlight
+                        {item.label}
                       </div>
                       <h3 className="mt-4 text-[22px] font-semibold leading-[1.04] tracking-[-0.04em] text-white">
                         {item.title}
@@ -411,7 +503,7 @@ export function FilmWorld() {
               </h2>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {processPillars.map((item, index) => {
                 const Icon = item.icon;
                 return (
@@ -439,6 +531,70 @@ export function FilmWorld() {
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-10 md:px-6 md:py-14">
+          <div className="section-shell">
+            <div className="mb-6">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+                Detailed Film Stories
+              </p>
+              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
+                Story, scale, and screen presence.
+              </h2>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-3">
+              {detailedStories.map((story, index) => (
+                <motion.article
+                  key={story.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 0.65,
+                    delay: index * 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-6 md:p-7"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70">
+                    <CalendarRange className="h-3.5 w-3.5" />
+                    {story.label}
+                  </div>
+
+                  <h3 className="mt-5 text-[24px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[28px]">
+                    {story.title}
+                  </h3>
+
+                  <div className="mt-5 grid grid-cols-3 gap-2">
+                    {story.gallery.map((image, imageIndex) => (
+                      <div
+                        key={imageIndex}
+                        className="h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5"
+                        style={{
+                          backgroundImage: `url('${image}')`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="mt-5 space-y-4">
+                    {story.body.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="text-[14px] leading-7 text-white/68 md:text-[15px] md:leading-8"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>

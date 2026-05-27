@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar";
 import { FilmWorld } from "@/components/film-world";
-import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 
 export default function FilmPage() {

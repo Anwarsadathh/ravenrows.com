@@ -30,24 +30,24 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          <a
-            href="#film"
+          <Link
+            href="/film"
             className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
             Film World
-          </a>
-          <a
-            href="#events"
+          </Link>
+          <Link
+            href="/events"
             className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
             Event World
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/#contact"
             className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -56,7 +56,7 @@ export function Navbar() {
             asChild
             className="h-11 rounded-full bg-[var(--foreground)] px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white hover:opacity-90 dark:bg-white dark:text-black"
           >
-            <a href="#contact">Start a Project</a>
+            <Link href="/#contact">Start a Project</Link>
           </Button>
         </div>
 
@@ -88,24 +88,24 @@ export function Navbar() {
                 </div>
 
                 <div className="mt-6 flex flex-col gap-1">
-                  <a
-                    href="#film"
+                  <Link
+                    href="/film"
                     className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Film World
-                  </a>
-                  <a
-                    href="#events"
+                  </Link>
+                  <Link
+                    href="/events"
                     className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Event World
-                  </a>
-                  <a
-                    href="#contact"
+                  </Link>
+                  <Link
+                    href="/#contact"
                     className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Contact
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="mt-auto pb-6 pt-8">
@@ -113,7 +113,7 @@ export function Navbar() {
                     asChild
                     className="h-12 w-full rounded-full bg-[var(--foreground)] text-[11px] font-medium uppercase tracking-[0.22em] text-white hover:opacity-90 dark:bg-white dark:text-black"
                   >
-                    <a href="#contact">Start a Project</a>
+                    <Link href="/#contact">Start a Project</Link>
                   </Button>
                 </div>
               </div>

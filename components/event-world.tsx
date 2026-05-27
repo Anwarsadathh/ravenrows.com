@@ -13,6 +13,7 @@ import {
   Gamepad2,
   GraduationCap,
   Flame,
+  ImageIcon,
 } from "lucide-react";
 
 const featuredEvents = [
@@ -24,6 +25,11 @@ const featuredEvents = [
       "Venue coordination and execution support at Ekana Indoor Stadium for one of India’s biggest esports events, delivered with seamless planning and high-energy on-ground management.",
     tags: ["Esports", "Venue Coordination", "Execution"],
     image: "/images/events/freefire/cover.jpg",
+    gallery: [
+      "/images/events/freefire/1.jpg",
+      "/images/events/freefire/2.jpg",
+      "/images/events/freefire/3.jpg",
+    ],
     accent: "from-violet-500/25 via-cyan-400/10 to-transparent",
   },
   {
@@ -34,6 +40,11 @@ const featuredEvents = [
       "Premium concert execution built around audience experience, show energy, and strong on-ground coordination for a memorable live entertainment moment.",
     tags: ["Concert", "Live", "Audience Experience"],
     image: "/images/events/armaan-malik/cover.jpg",
+    gallery: [
+      "/images/events/armaan-malik/1.jpg",
+      "/images/events/armaan-malik/2.jpg",
+      "/images/events/armaan-malik/3.jpg",
+    ],
     accent: "from-orange-500/20 via-pink-400/10 to-transparent",
   },
   {
@@ -44,6 +55,11 @@ const featuredEvents = [
       "Audience-facing outreach experiences connecting players and fans through school activations, community engagement, media moments, and energetic event execution.",
     tags: ["Outreach", "Cricket", "Community"],
     image: "/images/events/jabalpur-royal-lions/cover.jpg",
+    gallery: [
+      "/images/events/jabalpur-royal-lions/1.jpg",
+      "/images/events/jabalpur-royal-lions/2.jpg",
+      "/images/events/jabalpur-royal-lions/3.jpg",
+    ],
     accent: "from-cyan-500/20 via-violet-400/10 to-transparent",
   },
 ];
@@ -53,7 +69,7 @@ const servicePillars = [
     icon: Mic2,
     title: "Concerts & Live Shows",
     description:
-      "Artist-led productions, audience movement, and premium execution for memorable live events.",
+      "Artist-led productions, audience movement, premium stage coordination, and memorable live event execution.",
   },
   {
     icon: Trophy,
@@ -71,7 +87,7 @@ const servicePillars = [
     icon: Gamepad2,
     title: "Gaming & Esports",
     description:
-      "Venue finalisation, event operations, and execution support for large-scale gaming experiences.",
+      "Venue finalisation, event operations, audience flow, and execution support for large-scale gaming experiences.",
   },
   {
     icon: GraduationCap,
@@ -94,6 +110,11 @@ const eventArchive = [
     meta: "Uttar Pradesh · Bihar · J&K",
     type: "Education Outreach",
     image: "/images/events/tss-cricket-talent-hunt/cover.jpg",
+    gallery: [
+      "/images/events/tss-cricket-talent-hunt/1.jpg",
+      "/images/events/tss-cricket-talent-hunt/2.jpg",
+      "/images/events/tss-cricket-talent-hunt/3.jpg",
+    ],
   },
   {
     title: "Jain University Meets",
@@ -101,6 +122,11 @@ const eventArchive = [
     meta: "Bangalore",
     type: "Education Activation",
     image: "/images/events/jain-university/cover.jpg",
+    gallery: [
+      "/images/events/jain-university/1.jpg",
+      "/images/events/jain-university/2.jpg",
+      "/images/events/jain-university/3.jpg",
+    ],
   },
   {
     title: "Armaan Malik Concert",
@@ -108,6 +134,11 @@ const eventArchive = [
     meta: "Live Entertainment",
     type: "Concert",
     image: "/images/events/armaan-malik/cover.jpg",
+    gallery: [
+      "/images/events/armaan-malik/1.jpg",
+      "/images/events/armaan-malik/2.jpg",
+      "/images/events/armaan-malik/3.jpg",
+    ],
   },
   {
     title: "UP Warriorz Stadium Fill",
@@ -115,6 +146,11 @@ const eventArchive = [
     meta: "WPL",
     type: "Sports Marketing",
     image: "/images/events/up-warriorz/cover.jpg",
+    gallery: [
+      "/images/events/up-warriorz/1.jpg",
+      "/images/events/up-warriorz/2.jpg",
+      "/images/events/up-warriorz/3.jpg",
+    ],
   },
   {
     title: "UPT20 Season 2",
@@ -122,6 +158,11 @@ const eventArchive = [
     meta: "League Campaign",
     type: "Sports Promotion",
     image: "/images/events/upt20-season-2/cover.jpg",
+    gallery: [
+      "/images/events/upt20-season-2/1.jpg",
+      "/images/events/upt20-season-2/2.jpg",
+      "/images/events/upt20-season-2/3.jpg",
+    ],
   },
   {
     title: "Kanpur Superstars",
@@ -129,6 +170,23 @@ const eventArchive = [
     meta: "UPT20 Season 3",
     type: "Team Outreach",
     image: "/images/events/kanpur-superstars/cover.jpg",
+    gallery: [
+      "/images/events/kanpur-superstars/1.jpg",
+      "/images/events/kanpur-superstars/2.jpg",
+      "/images/events/kanpur-superstars/3.jpg",
+    ],
+  },
+  {
+    title: "South Delhi Superstars",
+    subtitle: "League match and stadium visuals",
+    meta: "Sports Campaign",
+    type: "Sports Promotion",
+    image: "/images/events/south-delhi-superstar/cover.jpg",
+    gallery: [
+      "/images/events/south-delhi-superstar/1.jpg",
+      "/images/events/south-delhi-superstar/2.jpg",
+      "/images/events/south-delhi-superstar/3.jpg",
+    ],
   },
   {
     title: "Free Fire MAX India Cup 2025",
@@ -136,6 +194,11 @@ const eventArchive = [
     meta: "Ekana Indoor Stadium · Lucknow",
     type: "Esports Event",
     image: "/images/events/freefire/cover.jpg",
+    gallery: [
+      "/images/events/freefire/1.jpg",
+      "/images/events/freefire/2.jpg",
+      "/images/events/freefire/3.jpg",
+    ],
   },
   {
     title: "Doctor's Warrior Cricket League",
@@ -143,6 +206,11 @@ const eventArchive = [
     meta: "Cricket League",
     type: "League Event",
     image: "/images/events/doctors-warrior-season-1/cover.jpg",
+    gallery: [
+      "/images/events/doctors-warrior-season-1/1.jpg",
+      "/images/events/doctors-warrior-season-1/2.jpg",
+      "/images/events/doctors-warrior-season-1/3.jpg",
+    ],
   },
   {
     title: "Doctor's Cricket League",
@@ -150,6 +218,11 @@ const eventArchive = [
     meta: "Cricket League",
     type: "League Event",
     image: "/images/events/doctors-cricket-season-2/cover.jpg",
+    gallery: [
+      "/images/events/doctors-cricket-season-2/1.jpg",
+      "/images/events/doctors-cricket-season-2/2.jpg",
+      "/images/events/doctors-cricket-season-2/3.jpg",
+    ],
   },
   {
     title: "UP Doctor's League",
@@ -157,6 +230,11 @@ const eventArchive = [
     meta: "Cricket League",
     type: "League Event",
     image: "/images/events/up-doctors-league-season-3/cover.jpg",
+    gallery: [
+      "/images/events/up-doctors-league-season-3/1.jpg",
+      "/images/events/up-doctors-league-season-3/2.jpg",
+      "/images/events/up-doctors-league-season-3/3.jpg",
+    ],
   },
   {
     title: "Jabalpur Royal Lions",
@@ -164,6 +242,11 @@ const eventArchive = [
     meta: "Madhya Pradesh T20",
     type: "Sports Outreach",
     image: "/images/events/jabalpur-royal-lions/cover.jpg",
+    gallery: [
+      "/images/events/jabalpur-royal-lions/1.jpg",
+      "/images/events/jabalpur-royal-lions/2.jpg",
+      "/images/events/jabalpur-royal-lions/3.jpg",
+    ],
   },
 ];
 
@@ -171,6 +254,11 @@ const detailedStories = [
   {
     title: "Jabalpur Royal Lions – Outreach Activity",
     label: "Sports Outreach",
+    gallery: [
+      "/images/events/jabalpur-royal-lions/1.jpg",
+      "/images/events/jabalpur-royal-lions/2.jpg",
+      "/images/events/jabalpur-royal-lions/3.jpg",
+    ],
     body: [
       "Raven Rows successfully organized and managed engaging outreach activities for Jabalpur Royal Lions across Gwalior and Indore, creating memorable experiences that brought the team closer to young cricket enthusiasts and fans.",
       "The sessions were filled with energy, excitement, and inspiring interactions as players connected with students, shared their journeys, and celebrated the spirit of cricket. Through seamless execution, audience engagement, and impactful on-ground management, Raven Rows helped strengthen the bond between the team and its supporters while building meaningful community engagement.",
@@ -180,10 +268,29 @@ const detailedStories = [
   {
     title: "Free Fire MAX India Cup 2025",
     label: "Esports Event",
+    gallery: [
+      "/images/events/freefire/1.jpg",
+      "/images/events/freefire/2.jpg",
+      "/images/events/freefire/3.jpg",
+    ],
     body: [
       "Raven Rows successfully facilitated venue coordination and execution support for the Free Fire MAX India Cup 2025 in Lucknow, with the event hosted at the prestigious Ekana Indoor Stadium.",
       "From venue booking management to on-ground coordination, Raven Rows ensured a smooth and professional setup for one of the country’s biggest esports events. The event brought together gaming enthusiasts, competitive players, and large-scale audience engagement, creating an electrifying atmosphere for the tournament.",
       "With efficient planning, seamless coordination, and strong execution capabilities, Raven Rows played a key role in delivering a high-impact esports experience at a premier venue, further expanding its footprint in large-scale entertainment and gaming events.",
+    ],
+  },
+  {
+    title: "Sports Admission Trials",
+    label: "Education Outreach",
+    gallery: [
+      "/images/events/tss-cricket-talent-hunt/1.jpg",
+      "/images/events/tss-cricket-talent-hunt/2.jpg",
+      "/images/events/tss-cricket-talent-hunt/3.jpg",
+    ],
+    body: [
+      "Raven Rows supported sports admission trial outreach with a strong focus on coordination, participant flow, and high-energy engagement across multiple regional touchpoints.",
+      "From practice sessions and coaching interactions to branding moments and student participation, the execution balanced structure with community excitement and aspirational storytelling.",
+      "The result was a well-managed outreach experience that connected institutions, aspiring athletes, and families through a more engaging admissions journey.",
     ],
   },
 ];
@@ -219,9 +326,9 @@ export function EventWorld() {
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/72 md:text-[17px] md:leading-8">
                   From concerts and league promotions to esports events,
-                  educational outreach, and large-scale activations, Raven Rows
-                  creates live experiences that move people and leave a lasting
-                  impression.
+                  educational outreach, activations, and large-scale execution,
+                  Raven Rows creates live experiences that move people and leave
+                  a lasting impression.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -245,8 +352,8 @@ export function EventWorld() {
               <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                 {[
                   "Concerts & live shows",
-                  "Sports leagues & outreach",
-                  "Esports & on-ground execution",
+                  "Sports leagues, outreach, and activations",
+                  "Esports, education, and on-ground execution",
                 ].map((item) => (
                   <div
                     key={item}
@@ -391,7 +498,7 @@ export function EventWorld() {
                 Event Archive
               </p>
               <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
-                Selected Event Work.
+                Selected event work.
               </h2>
               <p className="mt-4 max-w-2xl text-[15px] leading-7 text-white/68">
                 Organised as event collections so each project can hold multiple
@@ -437,6 +544,11 @@ export function EventWorld() {
                     <p className="mt-2 text-sm leading-6 text-white/65">
                       {item.subtitle}
                     </p>
+
+                    <div className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/45">
+                      <ImageIcon className="h-3.5 w-3.5" />
+                      Multi-image project
+                    </div>
                   </div>
                 </motion.article>
               ))}
@@ -459,7 +571,7 @@ export function EventWorld() {
               </p>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 lg:grid-cols-3">
               {detailedStories.map((story, index) => (
                 <motion.article
                   key={story.title}
@@ -481,6 +593,20 @@ export function EventWorld() {
                   <h3 className="mt-5 text-[24px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[28px]">
                     {story.title}
                   </h3>
+
+                  <div className="mt-5 grid grid-cols-3 gap-2">
+                    {story.gallery.map((image, imageIndex) => (
+                      <div
+                        key={imageIndex}
+                        className="h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5"
+                        style={{
+                          backgroundImage: `url('${image}')`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                    ))}
+                  </div>
 
                   <div className="mt-5 space-y-4">
                     {story.body.map((paragraph) => (
