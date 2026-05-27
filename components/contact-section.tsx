@@ -121,7 +121,7 @@ export function ContactSection() {
               </a>
 
               <a
-                href="tel:+918840654061"
+                href="tel:+917007537270"
                 className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10">
