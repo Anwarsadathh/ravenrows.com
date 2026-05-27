@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   CalendarRange,
   MapPin,
@@ -13,6 +16,7 @@ import {
   Gamepad2,
   GraduationCap,
   Flame,
+  X,
 } from "lucide-react";
 
 const featuredEvents = [
@@ -118,6 +122,8 @@ const eventArchive = [
       "/images/events/tss-cricket-talent-hunt/1.jpg",
       "/images/events/tss-cricket-talent-hunt/2.jpg",
       "/images/events/tss-cricket-talent-hunt/3.jpg",
+      "/images/events/tss-cricket-talent-hunt/4.jpg",
+      "/images/events/tss-cricket-talent-hunt/5.jpg",
     ],
   },
   {
@@ -178,6 +184,10 @@ const eventArchive = [
       "/images/events/kanpur-superstars/1.jpg",
       "/images/events/kanpur-superstars/2.jpg",
       "/images/events/kanpur-superstars/3.jpg",
+      "/images/events/kanpur-superstars/4.jpg",
+      "/images/events/kanpur-superstars/5.jpg",
+      "/images/events/kanpur-superstars/6.jpg",
+      "/images/events/kanpur-superstars/7.jpg",
     ],
   },
   {
@@ -290,6 +300,7 @@ const detailedStories = [
       "/images/events/tss-cricket-talent-hunt/1.jpg",
       "/images/events/tss-cricket-talent-hunt/2.jpg",
       "/images/events/tss-cricket-talent-hunt/3.jpg",
+      "/images/events/tss-cricket-talent-hunt/4.jpg",
     ],
     body: [
       "Raven Rows supported sports admission trial outreach with a strong focus on coordination, participant flow, and high-energy engagement across multiple regional touchpoints.",
@@ -300,6 +311,60 @@ const detailedStories = [
 ];
 
 export function EventWorld() {
+  const [lightbox, setLightbox] = useState<{
+    images: string[];
+    index: number;
+    title: string;
+  } | null>(null);
+
+  const openLightbox = (images: string[], index: number, title: string) => {
+    setLightbox({ images, index, title });
+  };
+
+  const closeLightbox = () => {
+    setLightbox(null);
+  };
+
+  const showPrev = () => {
+    if (!lightbox) return;
+    setLightbox({
+      ...lightbox,
+      index:
+        lightbox.index === 0
+          ? lightbox.images.length - 1
+          : lightbox.index - 1,
+    });
+  };
+
+  const showNext = () => {
+    if (!lightbox) return;
+    setLightbox({
+      ...lightbox,
+      index:
+        lightbox.index === lightbox.images.length - 1
+          ? 0
+          : lightbox.index + 1,
+    });
+  };
+
+  useEffect(() => {
+    if (!lightbox) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
+
   return (
     <section
       id="events"
@@ -544,7 +609,8 @@ export function EventWorld() {
                     delay: index * 0.03,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="group overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
+                  onClick={() => openLightbox(item.gallery, 0, item.title)}
+                  className="group cursor-pointer overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.04] backdrop-blur-sm"
                 >
                   <div className="relative h-44 overflow-hidden">
                     <div
@@ -569,6 +635,26 @@ export function EventWorld() {
                     <p className="mt-2 text-sm leading-6 text-white/65">
                       {item.subtitle}
                     </p>
+
+                    <div className="mt-4 grid grid-cols-3 gap-2">
+                      {item.gallery.slice(0, 3).map((img, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openLightbox(item.gallery, i, item.title);
+                          }}
+                          className="h-14 overflow-hidden rounded-[12px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
+                          style={{
+                            backgroundImage: `url('${img}')`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                          aria-label={`Open ${item.title} image ${i + 1}`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </motion.article>
               ))}
@@ -616,14 +702,19 @@ export function EventWorld() {
 
                   <div className="mt-5 grid grid-cols-3 gap-2">
                     {story.gallery.map((image, imageIndex) => (
-                      <div
+                      <button
                         key={imageIndex}
-                        className="h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5"
+                        type="button"
+                        onClick={() =>
+                          openLightbox(story.gallery, imageIndex, story.title)
+                        }
+                        className="h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
                         style={{
                           backgroundImage: `url('${image}')`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                         }}
+                        aria-label={`Open ${story.title} image ${imageIndex + 1}`}
                       />
                     ))}
                   </div>
@@ -681,6 +772,106 @@ export function EventWorld() {
           </div>
         </section>
       </div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/88 p-4 md:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: 10 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-6xl overflow-hidden rounded-[28px] border border-white/10 bg-[#0a0a0a]"
+            >
+              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 md:px-5">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-white/45">
+                    Gallery Viewer
+                  </p>
+                  <h3 className="mt-1 text-sm text-white/82 md:text-base">
+                    {lightbox.title}
+                  </h3>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={closeLightbox}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition hover:bg-white/10 hover:text-white"
+                  aria-label="Close gallery"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="relative flex items-center justify-center bg-black px-3 py-3 md:px-6 md:py-6">
+                <button
+                  type="button"
+                  onClick={showPrev}
+                  className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white/80 backdrop-blur transition hover:bg-black/70 hover:text-white md:left-5"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+
+                <div className="w-full">
+                  <img
+                    src={lightbox.images[lightbox.index]}
+                    alt={`${lightbox.title} ${lightbox.index + 1}`}
+                    className="max-h-[70vh] w-full rounded-[20px] object-contain"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={showNext}
+                  className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white/80 backdrop-blur transition hover:bg-black/70 hover:text-white md:right-5"
+                  aria-label="Next image"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="border-t border-white/10 px-4 py-3 md:px-5">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-white/45">
+                    {lightbox.index + 1} / {lightbox.images.length}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {lightbox.images.map((img, i) => (
+                      <button
+                        key={`${img}-${i}`}
+                        type="button"
+                        onClick={() =>
+                          setLightbox({ ...lightbox, index: i })
+                        }
+                        className={`h-14 w-14 overflow-hidden rounded-[12px] border transition ${
+                          i === lightbox.index
+                            ? "border-white/30 opacity-100"
+                            : "border-white/10 opacity-60 hover:opacity-100"
+                        }`}
+                        aria-label={`View image ${i + 1}`}
+                      >
+                        <div
+                          className="h-full w-full bg-cover bg-center"
+                          style={{ backgroundImage: `url('${img}')` }}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
