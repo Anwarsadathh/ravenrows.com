@@ -259,6 +259,15 @@ const eventArchive = [
       "/images/events/up-doctors-league-season-3/1.jpg",
       "/images/events/up-doctors-league-season-3/2.jpg",
       "/images/events/up-doctors-league-season-3/3.jpg",
+      "/images/events/up-doctors-league-season-3/4.jpg",
+      "/images/events/up-doctors-league-season-3/5.jpg",
+      "/images/events/up-doctors-league-season-3/6.jpg",
+      "/images/events/up-doctors-league-season-3/7.jpg",
+      "/images/events/up-doctors-league-season-3/8.jpg",
+      "/images/events/up-doctors-league-season-3/9.jpg",
+      "/images/events/up-doctors-league-season-3/10.jpg",
+      "/images/events/up-doctors-league-season-3/11.jpg",
+  
     ],
   },
   {
