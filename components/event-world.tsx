@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+
+import Image from "next/image";
+
 import {
   ArrowLeft,
   ArrowRight,
@@ -266,7 +269,6 @@ const eventArchive = [
       "/images/events/up-doctors-league-season-3/8.jpg",
       "/images/events/up-doctors-league-season-3/9.jpg",
       "/images/events/up-doctors-league-season-3/10.jpg",
-      "/images/events/up-doctors-league-season-3/11.jpg",
   
     ],
   },
@@ -341,31 +343,37 @@ export function EventWorld() {
     setLightbox({ images, index, title });
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightbox(null);
-  };
+  }, []);
 
-  const showPrev = () => {
-    if (!lightbox) return;
-    setLightbox({
-      ...lightbox,
-      index:
-        lightbox.index === 0
-          ? lightbox.images.length - 1
-          : lightbox.index - 1,
-    });
-  };
+  const showPrev = useCallback(() => {
+    setLightbox((current) => {
+      if (!current) return current;
 
-  const showNext = () => {
-    if (!lightbox) return;
-    setLightbox({
-      ...lightbox,
-      index:
-        lightbox.index === lightbox.images.length - 1
-          ? 0
-          : lightbox.index + 1,
+      return {
+        ...current,
+        index:
+          current.index === 0
+            ? current.images.length - 1
+            : current.index - 1,
+      };
     });
-  };
+  }, []);
+
+  const showNext = useCallback(() => {
+    setLightbox((current) => {
+      if (!current) return current;
+
+      return {
+        ...current,
+        index:
+          current.index === current.images.length - 1
+            ? 0
+            : current.index + 1,
+      };
+    });
+  }, []);
 
   useEffect(() => {
     if (!lightbox) return;
@@ -383,8 +391,8 @@ export function EventWorld() {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [lightbox]);
-
+  }, [lightbox, closeLightbox, showPrev, showNext]);
+  
   return (
     <section
       id="events"
@@ -721,7 +729,7 @@ export function EventWorld() {
                   </h3>
 
                   <div className="mt-5 grid grid-cols-3 gap-2">
-                    {story.gallery.map((image, imageIndex) => (
+                    {story.gallery.slice(0, 3).map((image, imageIndex) => (
                       <button
                         key={imageIndex}
                         type="button"
@@ -840,13 +848,16 @@ export function EventWorld() {
                   <ArrowLeft className="h-4 w-4" />
                 </button>
 
-                <div className="w-full">
-                  <img
-                    src={lightbox.images[lightbox.index]}
-                    alt={`${lightbox.title} ${lightbox.index + 1}`}
-                    className="max-h-[70vh] w-full rounded-[20px] object-contain"
-                  />
-                </div>
+               <div className="relative mx-auto h-[70vh] w-full">
+  <Image
+    src={lightbox.images[lightbox.index]}
+    alt={`${lightbox.title} ${lightbox.index + 1}`}
+    fill
+    className="rounded-[20px] object-contain"
+    sizes="100vw"
+    priority
+  />
+</div>
 
                 <button
                   type="button"

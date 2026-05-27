@@ -41,6 +41,12 @@ export function Navbar() {
             Event World
           </Link>
           <Link
+            href="/our-services"
+            className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            Our Services
+          </Link>
+          <Link
             href="/#contact"
             className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
@@ -99,6 +105,12 @@ export function Navbar() {
                     className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
                   >
                     Event World
+                  </Link>
+                  <Link
+                    href="/our-services"
+                    className="rounded-2xl px-3 py-3 text-base font-medium text-[var(--foreground)] transition hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Our Services
                   </Link>
                   <Link
                     href="/#contact"
