@@ -29,14 +29,30 @@ export function ContactSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
 
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      setSubmitted(true);
+    } else {
+      alert("Something went wrong. Please try again or call us directly.");
+    }
+  } catch {
+    alert("Network error. Please check your connection.");
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <section
       id="contact"
