@@ -43,21 +43,24 @@ const featuredEvents = [
     accentDot: "#7c3aed",
   },
   {
-    title: "Armaan Malik Concert",
-    category: "Concert Production",
-    location: "India",
-    description:
+  title: "Armaan Malik Concert",
+  category: "Concert Production",
+  location: "India",
+   description:
       "Premium concert execution built around audience experience, show energy, and strong on-ground coordination for a memorable live entertainment moment.",
-    tags: ["Concert", "Live", "Audience Experience"],
-    mediaType: "image",
-    image: "/images/events/armaan-malik/cover.jpg",
-    gallery: [
-      "/images/events/armaan-malik/1.jpg",
-      "/images/events/armaan-malik/2.jpg",
-    ],
-    accent: "from-orange-500/25 via-pink-400/15 to-transparent",
-    accentDot: "#f97316",
-  },
+  tags: ["Concert", "Live", "Audience Experience"],
+  mediaType: "video",                                          // ← video
+  video: "/images/events/armaan-malik/cover.mp4",             // ← your video path
+  poster: "/images/events/armaan-malik/cover.jpg",            // ← fallback thumbnail
+  image: "/images/events/armaan-malik/cover.jpg",             // ← keep for gallery bg
+  gallery: [
+    "/images/events/armaan-malik/1.jpg",
+    "/images/events/armaan-malik/2.jpg",
+     "/images/events/armaan-malik/cover.jpg",
+  ],
+  accent: "from-orange-500/25 via-pink-400/15 to-transparent",
+  accentDot: "f97316",
+},
   {
     title: "Jabalpur Royal Lions Outreach",
     category: "Sports Outreach",
@@ -174,8 +177,8 @@ const eventArchive = [
     ],
   },
   {
-    title: "UP Warriorz Stadium Fill",
-    subtitle: "Audience turnout and promotion",
+    title: "UP Warriorz - WPL",
+    subtitle: "Ticket sale Lucknow promotions",
     meta: "WPL",
     type: "Sports Marketing",
     image: "/images/events/up-warriorz/cover.jpg",
@@ -214,18 +217,7 @@ const eventArchive = [
       "/images/events/kanpur-superstars/7.jpg",
     ],
   },
-  {
-    title: "South Delhi Superstars",
-    subtitle: "League match and stadium visuals",
-    meta: "Sports Campaign",
-    type: "Sports Promotion",
-    image: "/images/events/south-delhi-superstar/cover.jpg",
-    gallery: [
-      "/images/events/south-delhi-superstar/1.jpg",
-      "/images/events/south-delhi-superstar/2.jpg",
-      "/images/events/south-delhi-superstar/3.jpg",
-    ],
-  },
+ 
   {
     title: "Free Fire MAX India Cup 2025",
     subtitle: "Venue coordination and event execution",
@@ -507,26 +499,21 @@ function FeaturedCard({
       className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-all duration-500 hover:border-white/20"
     >
       {/* Background media */}
-      {event.mediaType === "video" ? (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={event.poster}
-          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
-        >
-          <source src={event.video} type="video/mp4" />
-        </video>
-      ) : (
-        <div
-          className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.04]"
-          style={{
-            backgroundImage: `url('${event.image}')`,
-          }}
-        />
-      )}
+     {event.mediaType === "video" ? (
+  <video
+    autoPlay loop muted playsInline
+    preload="metadata"
+    poster={event.poster}
+    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+  >
+    <source src={event.video} type="video/mp4" />
+  </video>
+) : (
+  <div
+    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.04]"
+    style={{ backgroundImage: `url('${event.image}')` }}
+  />
+)}
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/40 to-black/10" />

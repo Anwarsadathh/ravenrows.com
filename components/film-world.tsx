@@ -6,11 +6,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   CalendarRange,
   Clapperboard,
   Flame,
-  PlayCircle,
   Sparkles,
   Trophy,
   Video,
@@ -28,8 +26,12 @@ const featuredFilms = [
     image: "/images/film/ayodhya-deepotsav/cover.jpg",
     gallery: [
       "/images/film/ayodhya-deepotsav/1.jpg",
+      "/images/film/ayodhya-deepotsav/cover.jpg",
       "/images/film/ayodhya-deepotsav/2.jpg",
       "/images/film/ayodhya-deepotsav/3.jpg",
+      "/images/film/ayodhya-deepotsav/4.jpg",
+      "/images/film/ayodhya-deepotsav/5.jpg",
+      "/images/film/ayodhya-deepotsav/6.jpg",
     ],
     tags: ["Drone", "Festival", "Cultural", "Cinematic"],
     accent: "from-orange-500/20 via-amber-300/10 to-transparent",
@@ -58,6 +60,16 @@ const featuredFilms = [
       "/images/film/kumbh/1.jpg",
       "/images/film/kumbh/2.jpg",
       "/images/film/kumbh/3.jpg",
+       "/images/film/kumbh/4.jpg",
+        "/images/film/kumbh/5.jpg",
+         "/images/film/kumbh/6.jpg",
+          "/images/film/kumbh/7.jpg",
+           "/images/film/kumbh/8.jpg",
+            "/images/film/kumbh/9.jpg",
+             "/images/film/kumbh/10.jpg",
+              "/images/film/kumbh/11.jpg",
+    
+
     ],
     tags: ["Documentary", "Large Scale", "Emotion"],
     accent: "from-cyan-500/18 via-violet-400/10 to-transparent",
@@ -401,22 +413,36 @@ export function FilmWorld() {
                         ))}
                       </div>
 
-                      <div className="mt-4 grid grid-cols-3 gap-2">
-                        {film.gallery.map((img, i) => (
-                          <button
-                            key={i}
-                            type="button"
-                            onClick={() => openLightbox(film.gallery, i, film.title)}
-                            className="h-16 overflow-hidden rounded-[14px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
-                            style={{
-                              backgroundImage: `url('${img}')`,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                            aria-label={`Open ${film.title} image ${i + 1}`}
-                          />
-                        ))}
-                      </div>
+                     {/* Thumbnail strip — show 3, indicate overflow */}
+<div className="mt-4 grid grid-cols-3 gap-2">
+  {film.gallery.slice(0, 3).map((img, i) => {
+    const isLast = i === 2;
+    const remaining = film.gallery.length - 3;
+    return (
+      <button
+        key={i}
+        type="button"
+        onClick={() => openLightbox(film.gallery, i, film.title)}
+        className="relative h-16 overflow-hidden rounded-[14px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
+        style={{
+          backgroundImage: `url('${img}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-label={`Open ${film.title} image ${i + 1}`}
+      >
+        {/* "+N" overlay on the 3rd thumbnail if more images exist */}
+        {isLast && remaining > 0 && (
+          <div className="absolute inset-0 flex items-center justify-center rounded-[14px] bg-black/60 backdrop-blur-sm">
+            <span className="text-[13px] font-semibold text-white">
+              +{remaining}
+            </span>
+          </div>
+        )}
+      </button>
+    );
+  })}
+</div>
                     </div>
                   </div>
                 </motion.article>
@@ -632,24 +658,34 @@ export function FilmWorld() {
                     {story.title}
                   </h3>
 
-                  <div className="mt-5 grid grid-cols-3 gap-2">
-                    {story.gallery.map((image, imageIndex) => (
-                      <button
-                        key={imageIndex}
-                        type="button"
-                        onClick={() =>
-                          openLightbox(story.gallery, imageIndex, story.title)
-                        }
-                        className="h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
-                        style={{
-                          backgroundImage: `url('${image}')`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }}
-                        aria-label={`Open ${story.title} image ${imageIndex + 1}`}
-                      />
-                    ))}
-                  </div>
+                 <div className="mt-5 grid grid-cols-3 gap-2">
+  {story.gallery.slice(0, 3).map((image, imageIndex) => {
+    const isLast = imageIndex === 2;
+    const remaining = story.gallery.length - 3;
+    return (
+      <button
+        key={imageIndex}
+        type="button"
+        onClick={() => openLightbox(story.gallery, imageIndex, story.title)}
+        className="relative h-24 overflow-hidden rounded-[18px] border border-white/10 bg-white/5 transition hover:scale-[1.02] hover:border-white/20"
+        style={{
+          backgroundImage: `url('${image}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-label={`Open ${story.title} image ${imageIndex + 1}`}
+      >
+        {isLast && remaining > 0 && (
+          <div className="absolute inset-0 flex items-center justify-center rounded-[18px] bg-black/60 backdrop-blur-sm">
+            <span className="text-[13px] font-semibold text-white">
+              +{remaining}
+            </span>
+          </div>
+        )}
+      </button>
+    );
+  })}
+</div>
 
                   <div className="mt-5 space-y-4">
                     {story.body.map((paragraph) => (

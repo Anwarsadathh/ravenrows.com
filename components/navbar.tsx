@@ -10,21 +10,21 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const screenworksItems = [
-  { label: "Documentary",             href: "/film#documentary" },
-  { label: "Brand Ad Shoot",          href: "/film#brand-ad-shoot" },
-  { label: "Product Ad Shoot",        href: "/film#product-ad-shoot" },
-  { label: "Photo Shoot",             href: "/film#photo-shoot" },
-  { label: "Digital Marketing",       href: "/film#digital-marketing" },
-  { label: "Visual Production",       href: "/film#visual-production" },
-  { label: "Event After Videos",      href: "/film#event-after-videos" },
+  { label: "Documentary",        href: "/film#documentary" },
+  { label: "Brand Ad Shoot",     href: "/film#brand-ad-shoot" },
+  { label: "Product Ad Shoot",   href: "/film#product-ad-shoot" },
+  { label: "Photo Shoot",        href: "/film#photo-shoot" },
+  { label: "Digital Marketing",  href: "/film#digital-marketing" },
+  { label: "Visual Production",  href: "/film#visual-production" },
+  { label: "Event After Videos", href: "/film#event-after-videos" },
 ];
 
 const liveworksItems = [
-  { label: "Events End to End Solution",                         href: "/events#events-end-to-end" },
-  { label: "Outreach Activation",                                href: "/events#outreach-activation" },
-  { label: "Promotional On-Ground Activities",                   href: "/events#promotional-activities" },
-  { label: "Reaching Target Audience through Activations",       href: "/events#target-audience-activations" },
-  { label: "Venue Booking",  href: "/events#collaborations" },
+  { label: "Events End to End Solution",                   href: "/events#events-end-to-end" },
+  { label: "Outreach Activation",                          href: "/events#outreach-activation" },
+  { label: "Promotional On-Ground Activities",             href: "/events#promotional-activities" },
+  { label: "Reaching Target Audience through Activations", href: "/events#target-audience-activations" },
+  { label: "Venue Booking",                                href: "/events#collaborations" },
 ];
 
 export function Navbar() {
@@ -36,7 +36,6 @@ export function Navbar() {
   const [mobileScreenOpen, setMobileScreenOpen] = useState(false);
   const [mobileLiveOpen,   setMobileLiveOpen]   = useState(false);
 
-  // Delayed close so moving mouse into dropdown doesn't flicker
   const openScreen  = () => { if (screenTimer.current) clearTimeout(screenTimer.current); setScreenOpen(true); };
   const closeScreen = () => { screenTimer.current = setTimeout(() => setScreenOpen(false), 120); };
   const openLive    = () => { if (liveTimer.current)  clearTimeout(liveTimer.current);  setLiveOpen(true); };
@@ -79,7 +78,6 @@ export function Navbar() {
                 onMouseLeave={closeScreen}
                 className="absolute left-1/2 top-full mt-3 w-[230px] -translate-x-1/2 overflow-hidden rounded-[20px] border border-black/[0.07] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.13),0_2px_8px_rgba(0,0,0,0.06)] dark:border-white/10 dark:bg-[#1a1a1a]"
               >
-                {/* Header row */}
                 <div className="flex items-center gap-2 border-b border-black/[0.06] bg-white/80 px-4 py-3 dark:border-white/8 dark:bg-white/[0.04]">
                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-50 dark:bg-teal-500/15">
                     <Film className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
@@ -89,7 +87,6 @@ export function Navbar() {
                   </span>
                 </div>
 
-                {/* Items */}
                 <div className="bg-white p-1.5 dark:bg-[#1a1a1a]">
                   {screenworksItems.map((item) => (
                     <Link
@@ -126,7 +123,6 @@ export function Navbar() {
                 onMouseLeave={closeLive}
                 className="absolute left-1/2 top-full mt-3 w-[290px] -translate-x-1/2 overflow-hidden rounded-[20px] border border-black/[0.07] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.13),0_2px_8px_rgba(0,0,0,0.06)] dark:border-white/10 dark:bg-[#1a1a1a]"
               >
-                {/* Header row */}
                 <div className="flex items-center gap-2 border-b border-black/[0.06] bg-white/80 px-4 py-3 dark:border-white/8 dark:bg-white/[0.04]">
                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-50 dark:bg-violet-500/15">
                     <Zap className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
@@ -136,7 +132,6 @@ export function Navbar() {
                   </span>
                 </div>
 
-                {/* Items */}
                 <div className="bg-white p-1.5 dark:bg-[#1a1a1a]">
                   {liveworksItems.map((item) => (
                     <Link
@@ -213,12 +208,12 @@ export function Navbar() {
                     </button>
 
                     {mobileScreenOpen && (
-                      <div className="mb-2 ml-2 mt-1 overflow-hidden rounded-[16px] border border-black/[0.07] bg-white shadow-sm dark:border-white/8 dark:bg-white/[0.05]">
+                      <div className="mb-2 ml-2 mt-1 overflow-hidden rounded-[16px] border border-black/[0.07] bg-white shadow-sm dark:border-white/10 dark:bg-[#1e1e1e]">
                         {screenworksItems.map((item) => (
                           <Link
                             key={item.label}
                             href={item.href}
-                            className="group flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-black/65 transition-colors first:pt-3 last:pb-3 hover:bg-black/[0.04] hover:text-black dark:text-white/60 dark:hover:bg-white/[0.06] dark:hover:text-white"
+                            className="group flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-black/85 transition-colors first:pt-3 last:pb-3 hover:bg-black/[0.05] hover:text-black dark:text-white/90 dark:hover:bg-white/[0.07] dark:hover:text-white"
                           >
                             <span className="h-1 w-1 shrink-0 rounded-full bg-black/20 group-hover:bg-teal-500 dark:bg-white/20 dark:group-hover:bg-teal-400" />
                             {item.label}
@@ -239,12 +234,12 @@ export function Navbar() {
                     </button>
 
                     {mobileLiveOpen && (
-                      <div className="mb-2 ml-2 mt-1 overflow-hidden rounded-[16px] border border-black/[0.07] bg-white shadow-sm dark:border-white/8 dark:bg-white/[0.05]">
+                      <div className="mb-2 ml-2 mt-1 overflow-hidden rounded-[16px] border border-black/[0.07] bg-white shadow-sm dark:border-white/10 dark:bg-[#1e1e1e]">
                         {liveworksItems.map((item) => (
                           <Link
                             key={item.label}
                             href={item.href}
-                            className="group flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-black/65 transition-colors first:pt-3 last:pb-3 hover:bg-black/[0.04] hover:text-black dark:text-white/60 dark:hover:bg-white/[0.06] dark:hover:text-white"
+                            className="group flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-black/85 transition-colors first:pt-3 last:pb-3 hover:bg-black/[0.05] hover:text-black dark:text-white/90 dark:hover:bg-white/[0.07] dark:hover:text-white"
                           >
                             <span className="h-1 w-1 shrink-0 rounded-full bg-black/20 group-hover:bg-violet-500 dark:bg-white/20 dark:group-hover:bg-violet-400" />
                             {item.label}
