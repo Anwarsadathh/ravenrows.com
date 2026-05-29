@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   ArrowUpRight,
@@ -7,9 +8,37 @@ import {
   Phone,
   Globe,
   Play,
+  PhoneCall,
+  CheckCircle2,
 } from "lucide-react";
 
 export function ContactSection() {
+  const [form, setForm] = useState({
+    brand: "",
+    name: "",
+    designation: "",
+    phone: "",
+    email: "",
+    brief: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Replace with your actual API/email handler
+    await new Promise((r) => setTimeout(r, 1000));
+    setLoading(false);
+    setSubmitted(true);
+  };
+
   return (
     <section
       id="contact"
@@ -20,21 +49,19 @@ export function ContactSection() {
       <div className="absolute bottom-0 left-0 h-52 w-52 rounded-full bg-cyan-300/10 blur-3xl" />
 
       <div className="section-shell relative">
-        <div className="grid gap-8 py-2 lg:grid-cols-[1fr_0.88fr] lg:items-center lg:gap-8">
-          {/* Left */}
+        <div className="grid gap-8 py-2 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-10">
+
+          {/* ── Left ── */}
           <div className="relative max-w-3xl">
             {/* Mobile background motif */}
             <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[180px] lg:hidden">
               <div className="absolute left-1/2 top-1 -translate-x-1/2 select-none text-[110px] font-semibold leading-none tracking-[-0.1em] text-white/[0.04] sm:text-[140px]">
                 RR
               </div>
-
               <div className="absolute right-1 top-1 h-20 w-20 rounded-full border border-white/[0.08]" />
               <div className="absolute right-4 top-4 h-14 w-14 rounded-full border border-white/[0.06]" />
-
               <div className="absolute left-[-8px] bottom-3 h-16 w-16 rounded-full bg-cyan-300/10 blur-2xl" />
               <div className="absolute right-[-8px] top-7 h-16 w-16 rounded-full bg-teal-300/10 blur-2xl" />
-
               <svg
                 className="absolute inset-0 h-full w-full"
                 viewBox="0 0 360 180"
@@ -69,34 +96,32 @@ export function ContactSection() {
               </div>
 
               <h2 className="max-w-[10ch] text-[30px] font-semibold leading-[0.95] tracking-[-0.05em] text-white sm:text-[38px] md:text-[48px]">
-                Let’s create something unforgettable.
+                Let's create something unforgettable.
               </h2>
 
               <p className="mt-3 max-w-[30rem] text-[14px] leading-7 text-white/72 sm:text-[15px]">
-                Whether it’s a film, event, or campaign, Raven Rows is ready to bring your vision to life.
+                Whether it's a film, event, or campaign, Raven Rows is ready to
+                bring your vision to life.
               </p>
             </div>
 
             {/* Mobile project card */}
-            <div className="relative z-10 mt-5 overflow-hidden rounded-[22px] border border-white/10 bg-white/8 p-4 shadow-[0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl lg:hidden">
+            <div className="relative z-10 mt-5 overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.08] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl lg:hidden">
               <div className="absolute right-[-18px] top-[-18px] h-20 w-20 rounded-full bg-teal-300/20 blur-2xl" />
               <div className="absolute bottom-[-8px] left-[-8px] h-16 w-16 rounded-full bg-cyan-300/10 blur-2xl" />
-
               <div className="relative flex items-start justify-between gap-4">
                 <div className="max-w-[14rem]">
                   <p className="text-[10px] uppercase tracking-[0.22em] text-white/52">
-                    Start a project
+                    Enquire Now
                   </p>
                   <h3 className="mt-2 text-[19px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
                     Film, events, and campaigns built with impact.
                   </h3>
                 </div>
-
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/10">
                   <Play className="h-4 w-4 fill-white text-white" />
                 </div>
               </div>
-
               <div className="mt-4 flex items-center gap-2 text-[13px] text-teal-300">
                 <span>Tell us your vision</span>
                 <ArrowUpRight className="h-4 w-4" />
@@ -107,31 +132,27 @@ export function ContactSection() {
             <div className="relative z-10 mt-5 grid gap-2.5 sm:mt-6">
               <a
                 href="mailto:ravenrows@gmail.com"
-                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
+                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/10">
                   <Mail className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
-                    Email
-                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Email</p>
                   <p className="truncate text-[14px]">ravenrows@gmail.com</p>
                 </div>
               </a>
 
               <a
                 href="tel:+917007537270"
-                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
+                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/10">
                   <Phone className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
-                    Phone
-                  </p>
-                  <p className="truncate text-[14px]">+91 88406 54061</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Phone</p>
+                  <p className="truncate text-[14px]">+91 7007537270</p>
                 </div>
               </a>
 
@@ -139,98 +160,233 @@ export function ContactSection() {
                 href="https://www.ravenrows.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/6 px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
+                className="group flex items-center gap-3 rounded-[16px] border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white/88 backdrop-blur-sm transition hover:bg-white/10"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/10">
                   <Globe className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
-                    Website
-                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Website</p>
                   <p className="truncate text-[14px]">www.ravenrows.com</p>
                 </div>
               </a>
             </div>
 
-           
+            {/* Mobile: call request form shown below contact info */}
+            <div className="mt-6 lg:hidden">
+              <CallRequestForm
+                form={form}
+                loading={loading}
+                submitted={submitted}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+              />
+            </div>
           </div>
 
-          {/* Right desktop visual */}
-          <div className="relative hidden min-h-[360px] lg:block">
-            <div className="absolute right-8 top-8 h-44 w-44 rounded-full bg-teal-400/18 blur-3xl" />
-            <div className="absolute bottom-6 left-8 h-40 w-40 rounded-full bg-cyan-300/10 blur-3xl" />
-
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="select-none text-[170px] font-semibold leading-none tracking-[-0.08em] text-white/[0.05]">
-                RR
-              </div>
-            </div>
-
-            <div className="absolute right-12 top-12 h-48 w-48 rounded-full border border-white/10" />
-            <div className="absolute right-20 top-20 h-36 w-36 rounded-full border border-white/8" />
-            <div className="absolute right-28 top-28 h-24 w-24 rounded-full border border-white/6" />
-
-            <div className="absolute left-4 top-8 w-[230px] rounded-[24px] border border-white/10 bg-white/8 p-4 shadow-[0_18px_44px_rgba(0,0,0,0.16)] backdrop-blur-xl">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-white/50">
-                Start a project
-              </p>
-              <h3 className="mt-2 text-[21px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
-                Film, events, and campaigns built with impact.
-              </h3>
-              <div className="mt-4 flex items-center gap-2 text-[13px] text-teal-300">
-                <span>Tell us your vision</span>
-                <ArrowUpRight className="h-4 w-4" />
-              </div>
-            </div>
-
-            <div className="absolute bottom-6 right-6 w-[210px] rounded-[24px] border border-white/10 bg-black/15 p-4 shadow-[0_18px_44px_rgba(0,0,0,0.16)] backdrop-blur-xl">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-white/50">
-                Raven Rows
-              </p>
-              <div className="mt-3 space-y-3">
-                <div>
-                  <p className="text-[24px] font-semibold leading-none tracking-[-0.05em] text-white">
-                    360°
-                  </p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-white/45">
-                    Creative execution
-                  </p>
-                </div>
-                <div className="h-px w-full bg-white/10" />
-                <p className="text-[13px] leading-6 text-white/70">
-                  Strategy, production, audience engagement, and on-ground delivery in one seamless flow.
-                </p>
-              </div>
-            </div>
-
-            <div className="absolute bottom-16 left-6 rounded-full border border-white/10 bg-white/6 px-3 py-1.5 backdrop-blur-sm">
-              <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.22em] text-white/58">
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-300/80" />
-                Creative Flow
-              </div>
-            </div>
-
-            <svg
-              className="absolute inset-0 h-full w-full"
-              viewBox="0 0 500 400"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M72 310C128 238 198 256 248 196C296 138 346 112 412 130"
-                stroke="rgba(255,255,255,0.14)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeDasharray="6 10"
-              />
-              <circle cx="72" cy="310" r="4" fill="rgba(45,212,191,0.85)" />
-              <circle cx="248" cy="196" r="4" fill="rgba(45,212,191,0.5)" />
-              <circle cx="412" cy="130" r="4" fill="rgba(45,212,191,0.85)" />
-            </svg>
+          {/* ── Right: Call Request Form (desktop only) ── */}
+          <div className="hidden lg:block">
+            <CallRequestForm
+              form={form}
+              loading={loading}
+              submitted={submitted}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ─── Call Request Form sub-component ─── */
+
+type FormState = {
+  brand: string;
+  name: string;
+  designation: string;
+  phone: string;
+  email: string;
+  brief: string;
+};
+
+function CallRequestForm({
+  form,
+  loading,
+  submitted,
+  onChange,
+  onSubmit,
+}: {
+  form: FormState;
+  loading: boolean;
+  submitted: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onSubmit: (e: React.FormEvent) => void;
+}) {
+  if (submitted) {
+    return (
+      <div className="flex min-h-[340px] flex-col items-center justify-center rounded-[28px] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-xl">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-teal-400/30 bg-teal-400/10">
+          <CheckCircle2 className="h-7 w-7 text-teal-300" />
+        </div>
+        <h3 className="mt-5 text-[22px] font-semibold tracking-[-0.04em] text-white">
+          Request received!
+        </h3>
+        <p className="mt-3 max-w-[22ch] text-[14px] leading-7 text-white/60">
+          The Raven Rows team will call you within 24 hours.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:p-7">
+      <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-teal-400/10 blur-3xl" />
+      <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-violet-400/8 blur-3xl" />
+
+      <div className="relative">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-400/20 bg-teal-400/10">
+            <PhoneCall className="h-4 w-4 text-teal-300" />
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">
+              Get in touch
+            </p>
+            <h3 className="text-[18px] font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-[20px]">
+              Request a call from Raven Rows
+            </h3>
+          </div>
+        </div>
+
+        <div className="mt-1 h-px w-full bg-white/[0.08]" />
+
+        {/* Form */}
+        <form onSubmit={onSubmit} className="mt-5 space-y-3">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Field
+              label="Brand / Organisation Name"
+              name="brand"
+              placeholder="e.g. Raven Rows"
+              value={form.brand}
+              onChange={onChange}
+              required
+            />
+            <Field
+              label="Your Name"
+              name="name"
+              placeholder="Full name"
+              value={form.name}
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Field
+              label="Designation"
+              name="designation"
+              placeholder="e.g. Marketing Head"
+              value={form.designation}
+              onChange={onChange}
+            />
+            <Field
+              label="Contact Number"
+              name="phone"
+              placeholder="+91 XXXXX XXXXX"
+              type="tel"
+              value={form.phone}
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          <Field
+            label="Email ID"
+            name="email"
+            placeholder="you@example.com"
+            type="email"
+            value={form.email}
+            onChange={onChange}
+            required
+          />
+
+          {/* Brief */}
+          <div className="flex flex-col gap-1.5">
+            <label className="text-[10px] uppercase tracking-[0.22em] text-white/45">
+              Brief Description about Project
+            </label>
+            <textarea
+              name="brief"
+              value={form.brief}
+              onChange={onChange}
+              placeholder="Describe your project — what, when, scale, goals..."
+              rows={4}
+              className="w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-3 text-[13px] leading-6 text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09] focus:ring-0"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90 disabled:opacity-60"
+          >
+            {loading ? (
+              <>
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-black/20 border-t-black" />
+                Sending…
+              </>
+            ) : (
+              <>
+                Request a Call
+                <PhoneCall className="h-3.5 w-3.5" />
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Reusable field ─── */
+function Field({
+  label,
+  name,
+  placeholder,
+  type = "text",
+  value,
+  onChange,
+  required,
+}: {
+  label: string;
+  name: string;
+  placeholder: string;
+  type?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label
+        htmlFor={name}
+        className="text-[10px] uppercase tracking-[0.22em] text-white/45"
+      >
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        className="rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-2.5 text-[13px] text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09]"
+      />
+    </div>
   );
 }

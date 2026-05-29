@@ -793,7 +793,7 @@ export function EventWorld() {
                   href="#contact"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
                 >
-                  Start a Project
+                  Enquire Now
                 </Link>
               </div>
             </motion.div>

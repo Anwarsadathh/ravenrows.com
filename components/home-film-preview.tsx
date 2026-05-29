@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 export function HomeFilmPreview() {
   return (
@@ -20,20 +18,21 @@ export function HomeFilmPreview() {
           <div className="absolute right-0 top-10 h-56 w-56 rounded-full bg-violet-500/10 blur-3xl" />
 
           <div className="relative grid lg:grid-cols-[1.02fr_1fr]">
+
+            {/* ── Left content ── */}
             <div className="flex flex-col justify-center px-5 py-7 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
               <p className="mb-3 text-[11px] uppercase tracking-[0.26em] text-white/70">
                 Film & Production
               </p>
 
-              <h3 className="max-w-[11ch] text-[34px] font-semibold leading-[0.95] tracking-[-0.07em] text-white sm:text-[44px] md:text-[52px]">
-                We don’t just create visuals.
-                <span className="mt-1 block text-white/70">We create emotion.</span>
+              <h3 className="max-w-[12ch] text-[34px] font-semibold leading-[0.95] tracking-[-0.07em] text-white sm:text-[44px] md:text-[52px]">
+                We don&apos;t just create visuals.
+                <span className="mt-1 block text-white/70">We create emotions.</span>
               </h3>
 
-              <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/72 md:text-base md:leading-8">
-                From documentaries and branded campaigns to sports storytelling
-                and cinematic productions, Raven Rows brings ideas to life
-                through powerful visual narratives.
+              <p className="mt-5 max-w-sm text-[15px] leading-7 text-white/60 md:text-[15px] md:leading-8">
+                With us, don&apos;t speak much to your customers — relate them with
+                emotions you bring to life.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2">
@@ -46,18 +45,9 @@ export function HomeFilmPreview() {
                   </span>
                 ))}
               </div>
-
-              <div className="mt-7">
-                <Link
-                  href="/film"
-                  className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition-all duration-300 hover:bg-white/90"
-                >
-                  Enter Screenworks
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
             </div>
 
+            {/* ── Right image ── */}
             <div className="relative min-h-[360px] p-4 sm:p-5 md:p-6 lg:min-h-[520px] lg:p-7">
               <div className="relative h-full overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.04] backdrop-blur-sm">
                 <div
@@ -80,18 +70,18 @@ export function HomeFilmPreview() {
                       Mahakumbh 2025
                     </h4>
 
-                    <p className="mt-4 max-w-[500px] text-sm leading-7 text-white/80">
-                      Capturing one of the world’s largest spiritual gatherings
+                   <p className="mt-2 max-w-[500px] text-[12px] leading-6 text-white/80 sm:text-sm sm:leading-7">
+                      Capturing one of the world&apos;s largest spiritual gatherings
                       through aerial visuals, documentary storytelling, and
                       emotionally grounded cinematic coverage.
                     </p>
 
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {["Documentary", "Government", "Cultural", "Large Scale"].map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/80 backdrop-blur-sm"
-                        >
+                   <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-5 sm:gap-2">
+  {["Documentary", "Government", "Cultural", "Large Scale"].map((tag) => (
+    <span
+      key={tag}
+      className="rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 text-[10px] text-white/80 backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px]"
+    >
                           {tag}
                         </span>
                       ))}
@@ -100,6 +90,7 @@ export function HomeFilmPreview() {
                 </div>
               </div>
             </div>
+
           </div>
         </motion.div>
       </div>

@@ -92,7 +92,7 @@ const adFilms = [
     tags: ["Sports Branding", "Commercial", "Talent-led"],
   },
   {
-    title: "Priyam Garm Gennie Ad Shoot",
+    title: "Priyyam Garg Uni Sex saloon Brand shoot",
     subtitle: "Commercial production",
     description:
       "Promotional content designed for digital-first brand visibility with sharp product communication and visually engaging execution.",
@@ -310,19 +310,13 @@ export function FilmWorld() {
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <Link
-                    href="#featured-films"
-                    className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
-                  >
-                    Explore Film Work
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                 
 
                   <Link
                     href="#contact"
                     className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white transition hover:bg-white/10"
                   >
-                    Start a Film Project
+                    Let's create a Story together!
                   </Link>
                 </div>
               </div>
@@ -350,14 +344,11 @@ export function FilmWorld() {
 
         <section id="featured-films" className="px-4 py-10 md:px-6 md:py-14">
           <div className="section-shell">
-            <div className="mb-6">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
-                Featured Work
-              </p>
-              <h2 className="mt-3 text-[30px] font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-[38px] md:text-[44px]">
-                Signature cinematic stories.
-              </h2>
-            </div>
+        <div className="mb-6">
+  <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+    Featured Work
+  </p>
+</div>
 
             <div className="grid gap-4 lg:grid-cols-3">
               {featuredFilms.map((film, index) => (
@@ -387,16 +378,13 @@ export function FilmWorld() {
                       <span className="rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75">
                         {film.category}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-full border border-white/12 bg-black/20 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white/60">
-                        <PlayCircle className="h-3 w-3" />
-                        Screenwork
-                      </span>
+                      
                     </div>
 
                     <div>
-                      <h3 className="max-w-[12ch] text-[28px] font-semibold leading-[1] tracking-[-0.05em] text-white sm:text-[32px]">
-                        {film.title}
-                      </h3>
+                      <h3 className="max-w-[12ch] text-[30px] font-semibold leading-[1] tracking-[-0.05em] text-white sm:text-[34px]">
+  {film.title}
+</h3>
 
                       <p className="mt-4 max-w-sm text-[14px] leading-7 text-white/78">
                         {film.description}
