@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   ArrowUpRight,
   Mail,
@@ -33,7 +32,6 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Replace with your actual API/email handler
     await new Promise((r) => setTimeout(r, 1000));
     setLoading(false);
     setSubmitted(true);
@@ -50,10 +48,7 @@ export function ContactSection() {
 
       <div className="section-shell relative">
         <div className="grid gap-8 py-2 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-10">
-
-          {/* ── Left ── */}
           <div className="relative max-w-3xl">
-            {/* Mobile background motif */}
             <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[180px] lg:hidden">
               <div className="absolute left-1/2 top-1 -translate-x-1/2 select-none text-[110px] font-semibold leading-none tracking-[-0.1em] text-white/[0.04] sm:text-[140px]">
                 RR
@@ -105,7 +100,6 @@ export function ContactSection() {
               </p>
             </div>
 
-            {/* Mobile project card */}
             <div className="relative z-10 mt-5 overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.08] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl lg:hidden">
               <div className="absolute right-[-18px] top-[-18px] h-20 w-20 rounded-full bg-teal-300/20 blur-2xl" />
               <div className="absolute bottom-[-8px] left-[-8px] h-16 w-16 rounded-full bg-cyan-300/10 blur-2xl" />
@@ -128,7 +122,6 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Contact info */}
             <div className="relative z-10 mt-5 grid gap-2.5 sm:mt-6">
               <a
                 href="mailto:ravenrows@gmail.com"
@@ -138,7 +131,9 @@ export function ContactSection() {
                   <Mail className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Email</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
+                    Email
+                  </p>
                   <p className="truncate text-[14px]">ravenrows@gmail.com</p>
                 </div>
               </a>
@@ -151,7 +146,9 @@ export function ContactSection() {
                   <Phone className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Phone</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
+                    Phone
+                  </p>
                   <p className="truncate text-[14px]">+91 7007537270</p>
                 </div>
               </a>
@@ -166,13 +163,14 @@ export function ContactSection() {
                   <Globe className="h-4 w-4 text-teal-300" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Website</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
+                    Website
+                  </p>
                   <p className="truncate text-[14px]">www.ravenrows.com</p>
                 </div>
               </a>
             </div>
 
-            {/* Mobile: call request form shown below contact info */}
             <div className="mt-6 lg:hidden">
               <CallRequestForm
                 form={form}
@@ -184,7 +182,6 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* ── Right: Call Request Form (desktop only) ── */}
           <div className="hidden lg:block">
             <CallRequestForm
               form={form}
@@ -199,8 +196,6 @@ export function ContactSection() {
     </section>
   );
 }
-
-/* ─── Call Request Form sub-component ─── */
 
 type FormState = {
   brand: string;
@@ -226,14 +221,14 @@ function CallRequestForm({
 }) {
   if (submitted) {
     return (
-      <div className="flex min-h-[340px] flex-col items-center justify-center rounded-[28px] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-xl">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-teal-400/30 bg-teal-400/10">
-          <CheckCircle2 className="h-7 w-7 text-teal-300" />
+      <div className="flex min-h-[260px] flex-col items-center justify-center rounded-[22px] border border-white/10 bg-white/[0.05] p-5 text-center backdrop-blur-xl sm:min-h-[340px] sm:rounded-[28px] sm:p-8">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-teal-400/30 bg-teal-400/10 sm:h-14 sm:w-14">
+          <CheckCircle2 className="h-6 w-6 text-teal-300 sm:h-7 sm:w-7" />
         </div>
-        <h3 className="mt-5 text-[22px] font-semibold tracking-[-0.04em] text-white">
+        <h3 className="mt-4 text-[20px] font-semibold tracking-[-0.04em] text-white sm:mt-5 sm:text-[22px]">
           Request received!
         </h3>
-        <p className="mt-3 max-w-[22ch] text-[14px] leading-7 text-white/60">
+        <p className="mt-2 max-w-[22ch] text-[13px] leading-6 text-white/60 sm:mt-3 sm:text-[14px] sm:leading-7">
           The Raven Rows team will call you within 24 hours.
         </p>
       </div>
@@ -241,21 +236,20 @@ function CallRequestForm({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:p-7">
+    <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.05] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:rounded-[28px] sm:p-7 sm:shadow-[0_24px_60px_rgba(0,0,0,0.22)]">
       <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-teal-400/10 blur-3xl" />
       <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-violet-400/8 blur-3xl" />
 
       <div className="relative">
-        {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-400/20 bg-teal-400/10">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-teal-400/20 bg-teal-400/10 sm:h-10 sm:w-10">
             <PhoneCall className="h-4 w-4 text-teal-300" />
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">
               Get in touch
             </p>
-            <h3 className="text-[18px] font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-[20px]">
+            <h3 className="text-[17px] font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-[20px]">
               Request a call from Raven Rows
             </h3>
           </div>
@@ -263,8 +257,7 @@ function CallRequestForm({
 
         <div className="mt-1 h-px w-full bg-white/[0.08]" />
 
-        {/* Form */}
-        <form onSubmit={onSubmit} className="mt-5 space-y-3">
+        <form onSubmit={onSubmit} className="mt-4 space-y-3 sm:mt-5">
           <div className="grid gap-3 sm:grid-cols-2">
             <Field
               label="Brand / Organisation Name"
@@ -313,7 +306,6 @@ function CallRequestForm({
             required
           />
 
-          {/* Brief */}
           <div className="flex flex-col gap-1.5">
             <label className="text-[10px] uppercase tracking-[0.22em] text-white/45">
               Brief Description about Project
@@ -323,15 +315,15 @@ function CallRequestForm({
               value={form.brief}
               onChange={onChange}
               placeholder="Describe your project — what, when, scale, goals..."
-              rows={4}
-              className="w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-3 text-[13px] leading-6 text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09] focus:ring-0"
+              rows={3}
+              className="w-full resize-none rounded-[12px] border border-white/10 bg-white/[0.06] px-3 py-2.5 text-[13px] leading-5 text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09] focus:ring-0 sm:rounded-[14px] sm:px-4 sm:py-3 sm:leading-6"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90 disabled:opacity-60"
+            className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90 disabled:opacity-60 sm:px-6 sm:py-3 sm:text-[11px] sm:tracking-[0.22em]"
           >
             {loading ? (
               <>
@@ -351,7 +343,6 @@ function CallRequestForm({
   );
 }
 
-/* ─── Reusable field ─── */
 function Field({
   label,
   name,
@@ -385,7 +376,7 @@ function Field({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className="rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-2.5 text-[13px] text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09]"
+        className="rounded-[12px] border border-white/10 bg-white/[0.06] px-3 py-2 text-[13px] text-white placeholder-white/28 outline-none transition focus:border-teal-400/40 focus:bg-white/[0.09] sm:rounded-[14px] sm:px-4 sm:py-2.5"
       />
     </div>
   );
