@@ -344,8 +344,8 @@ export function FilmWorld() {
 
         <section id="featured-films" className="px-4 py-10 md:px-6 md:py-14">
           <div className="section-shell">
-        <div className="mb-6">
-  <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+<div className="mb-6">
+  <p className="text-[15px] uppercase tracking-[0.20em] text-white/55">
     Featured Work
   </p>
 </div>
@@ -694,10 +694,10 @@ export function FilmWorld() {
                 </div>
 
                 <Link
-                  href="#contact"
+                  href="/#contact"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium uppercase tracking-[0.22em] text-black transition hover:bg-white/90"
                 >
-                  Start a Film Project
+                  Enquire Now
                 </Link>
               </div>
             </motion.div>

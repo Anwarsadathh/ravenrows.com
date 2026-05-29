@@ -24,7 +24,7 @@ const liveworksItems = [
   { label: "Outreach Activation",                                href: "/events#outreach-activation" },
   { label: "Promotional On-Ground Activities",                   href: "/events#promotional-activities" },
   { label: "Reaching Target Audience through Activations",       href: "/events#target-audience-activations" },
-  { label: "Collaboration with Colleges, Schools & Corporates",  href: "/events#collaborations" },
+  { label: "Venue Booking",  href: "/events#collaborations" },
 ];
 
 export function Navbar() {
