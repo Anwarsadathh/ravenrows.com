@@ -46,8 +46,7 @@
   --radius: 1.5rem;
 }
 
-/* globals.css */
-html[data-scroll-behavior="smooth"] {
+html {
   scroll-behavior: smooth;
 }
 
@@ -155,12 +154,6 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 0.26em;
   color: rgba(15, 23, 42, 0.48);
-}
-
-/* Skip rendering off-screen sections */
-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 
 /* Respect OS reduced motion preference */
