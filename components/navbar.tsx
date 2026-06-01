@@ -47,15 +47,17 @@ export function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <div className="relative h-10 w-[132px] shrink-0 md:h-11 md:w-[148px]">
-            <Image
-              src="/images/logo.png"
-              alt="Raven Rows"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </div>
+         {/* Desktop Logo */}
+<div className="relative h-10 w-[132px] shrink-0 md:h-11 md:w-[148px]">
+  <Image
+    src="/images/logo.png"
+    alt="Raven Rows"
+    fill
+    sizes="(min-width: 768px) 148px, 132px"   // ← add this
+    className="object-contain object-left"
+    priority
+  />
+</div>
         </Link>
 
         {/* ── Desktop Nav ── */}
@@ -190,9 +192,16 @@ export function Navbar() {
             >
               <div className="flex h-full flex-col">
                 <div className="border-b border-black/5 pb-5 dark:border-white/10">
-                  <div className="relative h-9 w-[132px]">
-                    <Image src="/images/logo.png" alt="Raven Rows" fill className="object-contain object-left" />
-                  </div>
+                {/* Mobile Sheet Logo */}
+<div className="relative h-9 w-[132px]">
+  <Image
+    src="/images/logo.png"
+    alt="Raven Rows"
+    fill
+    sizes="132px"                              // ← add this
+    className="object-contain object-left"
+  />
+</div>
                 </div>
 
                 <div className="mt-6 flex flex-col gap-1">

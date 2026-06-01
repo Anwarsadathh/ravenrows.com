@@ -37,7 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"        // ← add this
+    >
       <body
         className={`${bebasNeue.variable} ${cormorant.variable} ${dmSans.variable} antialiased`}
       >

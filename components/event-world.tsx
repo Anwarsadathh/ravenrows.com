@@ -56,7 +56,6 @@ const featuredEvents = [
   gallery: [
     "/images/events/armaan-malik/1.jpg",
     "/images/events/armaan-malik/2.jpg",
-     "/images/events/armaan-malik/cover.jpg",
   ],
   accent: "from-orange-500/25 via-pink-400/15 to-transparent",
   accentDot: "f97316",
@@ -173,7 +172,6 @@ const eventArchive = [
     gallery: [
       "/images/events/armaan-malik/1.jpg",
       "/images/events/armaan-malik/2.jpg",
-      "/images/events/armaan-malik/3.jpg",
     ],
   },
   {
@@ -188,6 +186,17 @@ const eventArchive = [
       "/images/events/up-warriorz/3.jpg",
     ],
   },
+  {
+  title: "Vote for Kashi Campaign",
+  subtitle: "General Elections 2019 – Varanasi",
+  meta: "Shri Narendra Modi",
+  type: "Promotional Campaign",
+  image: "/images/events/vote-for-kashi/cover.jpg",
+  gallery: [
+    "/images/events/vote-for-kashi/cover.jpg",
+    
+  ],
+},
   {
     title: "UPT20 Season 2",
     subtitle: "Marketing and stadium fill",
@@ -319,6 +328,7 @@ const detailedStories = [
       "With efficient planning, seamless coordination, and strong execution capabilities, Raven Rows played a key role in delivering a high-impact esports experience at a premier venue, further expanding its footprint in large-scale entertainment and gaming events.",
     ],
   },
+  
   {
     title: "Sports Admission Trials",
     label: "Education Outreach",
@@ -334,6 +344,16 @@ const detailedStories = [
       "The result was a well-managed outreach experience that connected institutions, aspiring athletes, and families through a more engaging admissions journey.",
     ],
   },
+{
+  title: "Vote for Kashi – Election Campaign 2019",
+  label: "Promotional Campaign",
+  gallery: ["/images/events/vote-for-kashi/cover.jpg"],
+  body: [
+    "Raven Rows proudly contributed to the 'Vote for Kashi' campaign for Shri Narendra Modi during the 2019 general elections, playing a key role in creating impactful campaign content that resonated with the people of Varanasi and beyond.",
+    "The campaign demanded a deep understanding of the cultural pulse of Kashi — its people, its spirit, and its aspirations. Raven Rows channelled that into compelling visual storytelling and on-ground content that connected authentically with the electorate across the region.",
+    "From content creation and production to ground-level execution, the team delivered a campaign that was both emotionally resonant and strategically effective, reinforcing Raven Rows' capability in large-scale public communication and high-stakes campaign work.",
+  ],
+}
 ];
 
 // ─── Auto-advancing archive card ─────────────────────────────────────────────
@@ -885,61 +905,119 @@ export function EventWorld() {
               </p>
             </motion.div>
 
-            <div className="grid gap-4 lg:grid-cols-3">
-              {detailedStories.map((story, index) => (
-                <motion.article
-                  key={story.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.65,
-                    delay: index * 0.08,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/18 sm:p-6 md:p-7"
-                >
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/65">
-                    <CalendarRange className="h-3.5 w-3.5" />
-                    {story.label}
-                  </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+  {detailedStories.slice(0, 3).map((story, index) => (
+    <motion.article
+      key={story.title}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.65,
+        delay: index * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="rounded-[30px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/18 sm:p-6 md:p-7"
+    >
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/65">
+        <CalendarRange className="h-3.5 w-3.5" />
+        {story.label}
+      </div>
 
-                  <h3 className="mt-5 text-[23px] font-semibold leading-[1.05] tracking-[-0.05em] text-white sm:text-[26px]">
-                    {story.title}
-                  </h3>
+      <h3 className="mt-5 text-[23px] font-semibold leading-[1.05] tracking-[-0.05em] text-white sm:text-[26px]">
+        {story.title}
+      </h3>
 
-                  <div className="mt-5 grid grid-cols-3 gap-2">
-                    {story.gallery.slice(0, 3).map((image, imageIndex) => (
-                      <button
-                        key={imageIndex}
-                        type="button"
-                        onClick={() =>
-                          openLightbox(story.gallery, imageIndex, story.title)
-                        }
-                        className="h-24 overflow-hidden rounded-[16px] border border-white/10 bg-white/5 transition-all hover:scale-[1.03] hover:border-white/22"
-                        style={{
-                          backgroundImage: `url('${image}')`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }}
-                        aria-label={`Open ${story.title} image ${imageIndex + 1}`}
-                      />
-                    ))}
-                  </div>
+      <div className="mt-5 grid grid-cols-3 gap-2">
+        {story.gallery.slice(0, 3).map((image, imageIndex) => (
+          <button
+            key={imageIndex}
+            type="button"
+            onClick={() => openLightbox(story.gallery, imageIndex, story.title)}
+            className="h-24 overflow-hidden rounded-[16px] border border-white/10 bg-white/5 transition-all hover:scale-[1.03] hover:border-white/22"
+            style={{
+              backgroundImage: `url('${image}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            aria-label={`Open ${story.title} image ${imageIndex + 1}`}
+          />
+        ))}
+      </div>
 
-                  <div className="mt-6 space-y-4">
-                    {story.body.map((paragraph, i) => (
-                      <p
-                        key={i}
-                        className="text-[13px] leading-7 text-white/62 md:text-[14px] md:leading-8"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+      <div className="mt-6 space-y-4">
+        {story.body.map((paragraph, i) => (
+          <p
+            key={i}
+            className="text-[13px] leading-7 text-white/62 md:text-[14px] md:leading-8"
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </motion.article>
+  ))}
+</div>
+
+{/* Spotlight 4th card */}
+{detailedStories[3] && (
+  <motion.article
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{
+      duration: 0.7,
+      delay: 0.15,
+      ease: [0.16, 1, 0.3, 1],
+    }}
+    className="mt-4 rounded-[32px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/18 sm:p-6 md:p-8"
+  >
+    <div className="grid gap-6 lg:grid-cols-[1fr_420px] lg:items-stretch">
+      <div className="flex flex-col justify-center">
+     <div className="inline-flex w-fit self-start items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/65">
+  <CalendarRange className="h-3.5 w-3.5 shrink-0" />
+  <span>{detailedStories[3].label}</span>
+</div>
+
+        <h3 className="mt-5 max-w-[16ch] text-[28px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[34px]">
+          {detailedStories[3].title}
+        </h3>
+
+        <div className="mt-6 space-y-4">
+          {detailedStories[3].body.map((paragraph, i) => (
+            <p
+              key={i}
+              className="max-w-2xl text-[14px] leading-7 text-white/62 md:text-[15px] md:leading-8"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={() =>
+          openLightbox(
+            ["/images/events/vote-for-kashi/cover.jpg"],
+            0,
+            detailedStories[3].title
+          )
+        }
+        className="group relative min-h-[320px] overflow-hidden rounded-[24px] border border-white/10 bg-white/5 transition-all duration-300 hover:scale-[1.01] hover:border-white/20"
+        aria-label={`Open ${detailedStories[3].title} image`}
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
+          style={{
+            backgroundImage: "url('/images/events/vote-for-kashi/cover.jpg')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+      </button>
+    </div>
+  </motion.article>
+)}
           </div>
         </section>
 
